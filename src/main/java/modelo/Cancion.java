@@ -7,15 +7,15 @@ public class Cancion {
     private String fechaLanzamiento;
     private double duracion;
     private int idArtista;   // FK
-    private int idCompania;  // FK
+    
 
-    public Cancion(int idCancion, String nombreCancion, String fechaLanzamiento, double duracion, int idArtista, int idCompania) {
+    public Cancion(int idCancion, String nombreCancion, String fechaLanzamiento, double duracion, int idArtista) {
         this.idCancion = idCancion;
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
         this.duracion = duracion;
         this.idArtista = idArtista;
-        this.idCompania = idCompania;
+       
     }
 
     @Override
@@ -25,8 +25,7 @@ public class Cancion {
                 + ", nombreCancion='" + nombreCancion + '\''
                 + ", fechaLanzamiento='" + fechaLanzamiento + '\''
                 + ", duracion=" + duracion
-                + ", idArtista=" + idArtista
-                + ", idCompania=" + idCompania
+                + ", idArtista=" + idArtista               
                 + '}';
     }
 
@@ -68,13 +67,5 @@ public class Cancion {
 
     public void setIdArtista(int idArtista) {
         this.idArtista = idArtista;
-    }
-
-    public int getIdCompania() {
-        return idCompania;
-    }
-
-    public void setIdCompania(int idCompania) {
-        this.idCompania = idCompania;
     }
 }
