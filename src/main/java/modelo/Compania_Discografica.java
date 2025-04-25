@@ -2,55 +2,57 @@ package modelo;
 
 public class Compania_Discografica {
 
-int ID_Compania;
-String Nombre_Compania;
-String Ubicacion;
-String Anio_Fundacion;
+    private int idCompania;
+    private String nombreCompania;
+    private String ubicacion;
+    private String anioFundacion;
 
-    public Compania_Discografica(int ID_Compania, String Nombre_Compania, String Ubicacion, String Anio_Fundacion) {
-        this.ID_Compania = ID_Compania;
-        this.Nombre_Compania = Nombre_Compania;
-        this.Ubicacion = Ubicacion;
-        this.Anio_Fundacion = Anio_Fundacion;
+    public Compania_Discografica(int idCompania, String nombreCompania, String ubicacion, String anioFundacion) {
+        this.idCompania = idCompania;
+        this.nombreCompania = nombreCompania;
+        this.ubicacion = ubicacion;
+        this.anioFundacion = anioFundacion;
     }
 
     @Override
     public String toString() {
-        return "Compania_Discografica{" + "ID_Compania=" + ID_Compania + ", Nombre_Compania=" + Nombre_Compania + ", Ubicacion=" + Ubicacion + ", Anio_Fundacion=" + Anio_Fundacion + '}';
+        return "CompaniaDiscografica{"
+                + "idCompania=" + idCompania
+                + ", nombreCompania='" + nombreCompania + '\''
+                + ", ubicacion='" + ubicacion + '\''
+                + ", anioFundacion='" + anioFundacion + '\''
+                + '}';
     }
 
-    public int getID_Compania() {
-        return ID_Compania;
+    public int getIdCompania() {
+        return idCompania;
     }
 
-    public void setID_Compania(int ID_Compania) {
-        this.ID_Compania = ID_Compania;
+    public void setIdCompania(int idCompania) {
+        this.idCompania = idCompania;
     }
 
-    public String getNombre_Compania() {
-        return Nombre_Compania;
+    public String getNombreCompania() {
+        return nombreCompania;
     }
 
-    public void setNombre_Compania(String Nombre_Compania) {
-        this.Nombre_Compania = Nombre_Compania;
+    public void setNombreCompania(String nombreCompania) {
+        this.nombreCompania = nombreCompania;
     }
 
     public String getUbicacion() {
-        return Ubicacion;
+        return ubicacion;
     }
 
-    public void setUbicacion(String Ubicacion) {
-        this.Ubicacion = Ubicacion;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
-    public String getAnio_Fundacion() {
-        return Anio_Fundacion;
+    public String getAnioFundacion() {
+        return anioFundacion;
     }
 
-    public void setAnio_Fundacion(String Anio_Fundacion) {
-        this.Anio_Fundacion = Anio_Fundacion;
+    public void setAnioFundacion(String anioFundacion) {
+        this.anioFundacion = anioFundacion;
     }
-
-    
-    
 }
