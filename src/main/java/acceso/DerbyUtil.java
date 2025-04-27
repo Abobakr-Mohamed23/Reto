@@ -1,4 +1,3 @@
-
 package acceso;
 
 import java.sql.Connection;
@@ -11,9 +10,9 @@ public class DerbyUtil {
 
     private static final String URL_CONEXION = "jdbc:derby://localhost:1527/reto";
 
-    private static final String USUARIO = "root";
+    private static final String USUARIO = "reto";
 
-    private static final String CONTRASEGNA = "root";
+    private static final String CONTRASEGNA = "reto";
 
     public static Connection abrirConexion() throws ClassNotFoundException, SQLException {
         Class.forName(CONECTOR_DERBY);

@@ -1,34 +1,21 @@
 package vista;
 
-
 import acceso.AccesoCompania;
 import modelo.Compania_Discografica;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Programaci�n DAM-DAW
- */
 public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form EjemploFormularioTabla
-     */
     public ConsultaTodosCompanias() {
         initComponents();
         lblError.setText("");
         
         //Se rellena la tabla con los datos
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("C�digo");
+        modelo.addColumn("Código");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Ubicaci�n");
+        modelo.addColumn("Ubicación");
         tbDepartamentos.setModel(modelo);
         Object[] fila;
         try{
@@ -41,7 +28,7 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
             }
         }
         catch (ClassNotFoundException cnfe) {
-            lblError.setText("Error al conectar con la base de dartos.");
+            lblError.setText("Error al conectar con la base de datos.");
         } 
         catch (SQLException sqle) {
             lblError.setText("Error de SQL.");

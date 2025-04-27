@@ -56,7 +56,7 @@ public class AccesoCompania {
         Compania_Discografica compania = null;
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaConsultar = "SELECT * FROM compania WHERE codigo = " + codigo;
+            String sentenciaConsultar = "SELECT * FROM compania WHERE idCompania = " + codigo;
             Statement sentencia = conexion.createStatement();
             ResultSet resultados = sentencia.executeQuery(sentenciaConsultar);
             if (resultados.next()) {
@@ -102,7 +102,7 @@ public class AccesoCompania {
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaEliminar = "DELETE FROM compania "
-                    + " WHERE codigo = " + codigo;
+                    + " WHERE idCompania = " + codigo;
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaEliminar) == 1) {
                 eliminado = true;
