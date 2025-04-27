@@ -26,7 +26,7 @@ CREATE TABLE cancion (
 );
 
 
--------------------------
+---------Insertar datos----------------
 
 -- Insertar compañías
 INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Sony Music', 'Estados Unidos', '1929');

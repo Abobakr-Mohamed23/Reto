@@ -11,7 +11,7 @@ public class InsertarDatos {
             Class.forName("org.apache.derby.client.ClientAutoloadedDriver");
 
             // Establece la conexión con la base de datos
-            conexion = DriverManager.getConnection("jdbc:derby://localhost:1527/personal", "root", "root");
+            conexion = DriverManager.getConnection("jdbc:derby://localhost:1527/reto", "reto", "reto");
             System.out.println("✔ Conectado a la base de datos.");
 
             Statement sentencia = conexion.createStatement();
