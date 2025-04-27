@@ -23,6 +23,8 @@ public class Principal extends javax.swing.JFrame {
         menuDpto = new javax.swing.JMenu();
         menuConsultarUno = new javax.swing.JMenuItem();
         menuConsultarTodos = new javax.swing.JMenuItem();
+        menuEliminarCompania = new javax.swing.JMenuItem();
+        menuInsertarCompania = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +46,22 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         menuDpto.add(menuConsultarTodos);
+
+        menuEliminarCompania.setText("Eliminar Compañía");
+        menuEliminarCompania.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEliminarCompaniaActionPerformed(evt);
+            }
+        });
+        menuDpto.add(menuEliminarCompania);
+
+        menuInsertarCompania.setText("Insertar Compañía");
+        menuInsertarCompania.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInsertarCompaniaActionPerformed(evt);
+            }
+        });
+        menuDpto.add(menuInsertarCompania);
 
         menuBar.add(menuDpto);
 
@@ -82,6 +100,22 @@ public class Principal extends javax.swing.JFrame {
             formularioConsultaTodos.setVisible(true);
         }
     }//GEN-LAST:event_menuConsultarTodosActionPerformed
+
+    private void menuEliminarCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarCompaniaActionPerformed
+      if (eliminarCompania == null || eliminarCompania.isClosed()){
+            eliminarCompania = new EliminarCompania();
+            escritorio.add(eliminarCompania);
+            eliminarCompania.setVisible(true);
+        }
+    }//GEN-LAST:event_menuEliminarCompaniaActionPerformed
+
+    private void menuInsertarCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInsertarCompaniaActionPerformed
+         if (insertarCompania == null || insertarCompania.isClosed()){
+            insertarCompania = new InsertarCompania();
+            escritorio.add(insertarCompania);
+            insertarCompania.setVisible(true);
+        }
+    }//GEN-LAST:event_menuInsertarCompaniaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,8 +159,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultarTodos;
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenu menuDpto;
+    private javax.swing.JMenuItem menuEliminarCompania;
+    private javax.swing.JMenuItem menuInsertarCompania;
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;
     ConsultaTodosCompanias formularioConsultaTodos = null;
+     EliminarCompania eliminarCompania = null;
+     InsertarCompania insertarCompania = null;
+     
 }

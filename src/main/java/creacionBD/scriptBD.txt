@@ -3,8 +3,9 @@ CREATE TABLE compania (
     idCompania INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nombreCompania VARCHAR(100) NOT NULL,
     ubicacion VARCHAR(100),
-    anioFundacion VARCHAR(4)
+    anioFundacion DATE
 );
+
 
 -- Tabla artista
 CREATE TABLE artista (

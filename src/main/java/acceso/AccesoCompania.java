@@ -16,7 +16,7 @@ public class AccesoCompania {
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaInsertar = "INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) "
-                + " VALUES('" + compania.getNombreCompania() + "', '" + compania.getUbicacion() + "', '" + compania.getAnioFundacion() + "')";
+                    + " VALUES('" + compania.getNombreCompania() + "', '" + compania.getUbicacion() + "', '" + compania.getAnioFundacion() + "')";
             Statement sentencia = conexion.createStatement();
             sentencia.executeUpdate(sentenciaInsertar);
             sentencia.close();
@@ -39,7 +39,7 @@ public class AccesoCompania {
                 compania = new Compania_Discografica(resultados.getInt("idCompania"),
                         resultados.getString("nombreCompania"),
                         resultados.getString("ubicacion"),
-                        resultados.getString("anioFundacion"));
+                        resultados.getDate("anioFundacion"));
                 listaCompania.add(compania);
             }
             resultados.close();
@@ -63,7 +63,7 @@ public class AccesoCompania {
                 compania = new Compania_Discografica(resultados.getInt("idCompania"),
                         resultados.getString("nombreCompania"),
                         resultados.getString("ubicacion"),
-                        resultados.getString("anioFundacion"));
+                        resultados.getDate("anioFundacion"));
             }
             resultados.close();
             sentencia.close();
@@ -79,11 +79,11 @@ public class AccesoCompania {
         boolean modificado = false;
         try {
             conexion = DerbyUtil.abrirConexion();
-           String sentenciaActualizar = "UPDATE compania SET "
-                + " nombreCompania = '" + compania.getNombreCompania() + "', "
-                + " ubicacion = '" + compania.getUbicacion() + "', "
-                + " anioFundacion = '" + compania.getAnioFundacion() + "'"
-                + " WHERE idCompania = " + compania.getIdCompania();
+            String sentenciaActualizar = "UPDATE compania SET "
+                    + " nombreCompania = '" + compania.getNombreCompania() + "', "
+                    + " ubicacion = '" + compania.getUbicacion() + "', "
+                    + " anioFundacion = '" + compania.getAnioFundacion() + "'"
+                    + " WHERE idCompania = " + compania.getIdCompania();
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
                 modificado = true;
@@ -98,20 +98,20 @@ public class AccesoCompania {
     public static boolean eliminar(int codigo)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-        boolean eliminado = false;
+
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaEliminar = "DELETE FROM compania "
                     + " WHERE idCompania = " + codigo;
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaEliminar) == 1) {
-                eliminado = true;
+                return true;
             }
             sentencia.close();
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-        return eliminado;
+        return false;
     }
 
     public static int eliminarPorUbicacion(String ubicacion)
