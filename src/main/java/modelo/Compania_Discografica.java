@@ -1,14 +1,27 @@
 package modelo;
 
+
+import java.sql.Date;
+
+
 public class Compania_Discografica {
 
     private int idCompania;
     private String nombreCompania;
     private String ubicacion;
-    private String anioFundacion;
 
-    public Compania_Discografica(int idCompania, String nombreCompania, String ubicacion, String anioFundacion) {
+    private Date anioFundacion; 
+
+    public Compania_Discografica(int idCompania, String nombreCompania, String ubicacion, Date anioFundacion) {
+
         this.idCompania = idCompania;
+        this.nombreCompania = nombreCompania;
+        this.ubicacion = ubicacion;
+        this.anioFundacion = anioFundacion;
+    }
+
+
+    public Compania_Discografica(String nombreCompania, String ubicacion, Date anioFundacion) {
         this.nombreCompania = nombreCompania;
         this.ubicacion = ubicacion;
         this.anioFundacion = anioFundacion;
@@ -16,11 +29,12 @@ public class Compania_Discografica {
 
     @Override
     public String toString() {
-        return "CompaniaDiscografica{"
+        return "Compania_Discografica{"
                 + "idCompania=" + idCompania
                 + ", nombreCompania='" + nombreCompania + '\''
                 + ", ubicacion='" + ubicacion + '\''
-                + ", anioFundacion='" + anioFundacion + '\''
+                + ", anioFundacion=" + anioFundacion
+
                 + '}';
     }
 
@@ -48,11 +62,13 @@ public class Compania_Discografica {
         this.ubicacion = ubicacion;
     }
 
-    public String getAnioFundacion() {
+
+    public Date getAnioFundacion() { 
         return anioFundacion;
     }
 
-    public void setAnioFundacion(String anioFundacion) {
+    public void setAnioFundacion(Date anioFundacion) { 
+
         this.anioFundacion = anioFundacion;
     }
 }

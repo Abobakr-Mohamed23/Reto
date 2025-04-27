@@ -10,27 +10,31 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
     public ConsultaTodosCompanias() {
         initComponents();
         lblError.setText("");
-        
+
+
+
         //Se rellena la tabla con los datos
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Código");
         modelo.addColumn("Nombre");
         modelo.addColumn("Ubicación");
+        modelo.addColumn("Fecha");
         tbDepartamentos.setModel(modelo);
         Object[] fila;
-        try{
-            for(Compania_Discografica dpto: AccesoCompania.consultarTodos()){
-                fila = new Object[3];
+        try {
+            for (Compania_Discografica dpto : AccesoCompania.consultarTodos()) {
+                fila = new Object[4];
                 fila[0] = dpto.getIdCompania();
                 fila[1] = dpto.getNombreCompania();
                 fila[2] = dpto.getUbicacion();
+                fila[3] = dpto.getAnioFundacion();
+
                 modelo.addRow(fila);
             }
-        }
-        catch (ClassNotFoundException cnfe) {
+        } catch (ClassNotFoundException cnfe) {
             lblError.setText("Error al conectar con la base de datos.");
-        } 
-        catch (SQLException sqle) {
+        } catch (SQLException sqle) {
+
             lblError.setText("Error de SQL.");
         }
     }
@@ -98,7 +102,9 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblError;
