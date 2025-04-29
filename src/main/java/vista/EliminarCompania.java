@@ -4,19 +4,23 @@
  */
 package vista;
 
+
 import acceso.AccesoCompania;
 import java.sql.SQLException;
 import modelo.Compania_Discografica;
+
 
 /**
  *
  * @author juaan
  */
 public class EliminarCompania extends javax.swing.JInternalFrame {
+
     
     public EliminarCompania() {
         initComponents();
         lblConfirmacion.setText("");
+
     }
 
     /**
@@ -27,6 +31,7 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
 
         jLabel1 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
@@ -47,10 +52,12 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Código de la compañía");
 
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
@@ -89,10 +96,12 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblError)
                 .addContainerGap(88, Short.MAX_VALUE))
+
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
@@ -124,5 +133,6 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblConfirmacion;
     private javax.swing.JLabel lblError;
     private javax.swing.JTextField txtCodigo;
+
     // End of variables declaration//GEN-END:variables
 }

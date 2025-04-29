@@ -30,6 +30,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         menuActualizarCompania.setText("Compañía");
@@ -113,6 +114,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuConsultarTodosActionPerformed
 
+
     private void menuEliminarCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarCompaniaActionPerformed
         if (eliminarCompania == null || eliminarCompania.isClosed()) {
             eliminarCompania = new EliminarCompania();
@@ -183,6 +185,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenuItem menuEliminarCompania;
     private javax.swing.JMenuItem menuInsertarCompania;
+
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;

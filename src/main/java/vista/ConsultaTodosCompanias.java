@@ -11,6 +11,8 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
         initComponents();
         lblError.setText("");
 
+
+
         //Se rellena la tabla con los datos
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Código");
@@ -32,6 +34,7 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
         } catch (ClassNotFoundException cnfe) {
             lblError.setText("Error al conectar con la base de datos.");
         } catch (SQLException sqle) {
+
             lblError.setText("Error de SQL.");
         }
     }
@@ -98,6 +101,8 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
