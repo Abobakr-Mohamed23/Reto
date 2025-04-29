@@ -18,17 +18,21 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         escritorio = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
-        menuDpto = new javax.swing.JMenu();
+        menuActualizarCompania = new javax.swing.JMenu();
         menuConsultarUno = new javax.swing.JMenuItem();
         menuConsultarTodos = new javax.swing.JMenuItem();
         menuEliminarCompania = new javax.swing.JMenuItem();
         menuInsertarCompania = new javax.swing.JMenuItem();
+        menuActualizarCompa = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        menuDpto.setText("Compañía");
+        menuActualizarCompania.setText("Compañía");
 
         menuConsultarUno.setText("Consultar");
         menuConsultarUno.addActionListener(new java.awt.event.ActionListener() {
@@ -36,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
                 menuConsultarUnoActionPerformed(evt);
             }
         });
-        menuDpto.add(menuConsultarUno);
+        menuActualizarCompania.add(menuConsultarUno);
 
         menuConsultarTodos.setText("Consultar Todos");
         menuConsultarTodos.setToolTipText("");
@@ -45,7 +49,7 @@ public class Principal extends javax.swing.JFrame {
                 menuConsultarTodosActionPerformed(evt);
             }
         });
-        menuDpto.add(menuConsultarTodos);
+        menuActualizarCompania.add(menuConsultarTodos);
 
         menuEliminarCompania.setText("Eliminar Compañía");
         menuEliminarCompania.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
                 menuEliminarCompaniaActionPerformed(evt);
             }
         });
-        menuDpto.add(menuEliminarCompania);
+        menuActualizarCompania.add(menuEliminarCompania);
 
         menuInsertarCompania.setText("Insertar Compañía");
         menuInsertarCompania.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +65,17 @@ public class Principal extends javax.swing.JFrame {
                 menuInsertarCompaniaActionPerformed(evt);
             }
         });
-        menuDpto.add(menuInsertarCompania);
+        menuActualizarCompania.add(menuInsertarCompania);
 
-        menuBar.add(menuDpto);
+        menuActualizarCompa.setText("Actualizar Compañía");
+        menuActualizarCompa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuActualizarCompaActionPerformed(evt);
+            }
+        });
+        menuActualizarCompania.add(menuActualizarCompa);
+
+        menuBar.add(menuActualizarCompania);
 
         setJMenuBar(menuBar);
 
@@ -86,7 +98,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuConsultarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarUnoActionPerformed
-        if (fomularioConsultaUno == null || fomularioConsultaUno.isClosed()){
+        if (fomularioConsultaUno == null || fomularioConsultaUno.isClosed()) {
             fomularioConsultaUno = new ConsultaCompania();
             escritorio.add(fomularioConsultaUno);
             fomularioConsultaUno.setVisible(true);
@@ -94,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuConsultarUnoActionPerformed
 
     private void menuConsultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarTodosActionPerformed
-       if (formularioConsultaTodos == null || formularioConsultaTodos.isClosed()){
+        if (formularioConsultaTodos == null || formularioConsultaTodos.isClosed()) {
             formularioConsultaTodos = new ConsultaTodosCompanias();
             escritorio.add(formularioConsultaTodos);
             formularioConsultaTodos.setVisible(true);
@@ -102,7 +114,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuConsultarTodosActionPerformed
 
     private void menuEliminarCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarCompaniaActionPerformed
-      if (eliminarCompania == null || eliminarCompania.isClosed()){
+        if (eliminarCompania == null || eliminarCompania.isClosed()) {
             eliminarCompania = new EliminarCompania();
             escritorio.add(eliminarCompania);
             eliminarCompania.setVisible(true);
@@ -110,12 +122,20 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuEliminarCompaniaActionPerformed
 
     private void menuInsertarCompaniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInsertarCompaniaActionPerformed
-         if (insertarCompania == null || insertarCompania.isClosed()){
+        if (insertarCompania == null || insertarCompania.isClosed()) {
             insertarCompania = new InsertarCompania();
             escritorio.add(insertarCompania);
             insertarCompania.setVisible(true);
         }
     }//GEN-LAST:event_menuInsertarCompaniaActionPerformed
+
+    private void menuActualizarCompaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActualizarCompaActionPerformed
+        if (actualizarCompania == null || actualizarCompania.isClosed()) {
+            actualizarCompania = new ActualizarCompania();
+            escritorio.add(actualizarCompania);
+            actualizarCompania.setVisible(true);
+        }
+    }//GEN-LAST:event_menuActualizarCompaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,17 +175,19 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuActualizarCompa;
+    private javax.swing.JMenu menuActualizarCompania;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuConsultarTodos;
     private javax.swing.JMenuItem menuConsultarUno;
-    private javax.swing.JMenu menuDpto;
     private javax.swing.JMenuItem menuEliminarCompania;
     private javax.swing.JMenuItem menuInsertarCompania;
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;
     ConsultaTodosCompanias formularioConsultaTodos = null;
-     EliminarCompania eliminarCompania = null;
-     InsertarCompania insertarCompania = null;
-     
+    EliminarCompania eliminarCompania = null;
+    InsertarCompania insertarCompania = null;
+    ActualizarCompania actualizarCompania = null;
 }

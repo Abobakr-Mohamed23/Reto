@@ -76,7 +76,7 @@ public class AccesoCompania {
     public static boolean modificar(Compania_Discografica compania)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-        boolean modificado = false;
+       
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaActualizar = "UPDATE compania SET "
@@ -86,13 +86,13 @@ public class AccesoCompania {
                     + " WHERE idCompania = " + compania.getIdCompania();
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
-                modificado = true;
+               return true;
             }
             sentencia.close();
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-        return modificado;
+        return false;
     }
 
     public static boolean eliminar(int codigo)

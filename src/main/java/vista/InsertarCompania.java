@@ -144,7 +144,6 @@ public class InsertarCompania extends javax.swing.JInternalFrame {
         try {
 
             java.util.Date mFecha = jdateAnio.getDate();
-
             java.sql.Date anioFundacion = null;
 
             if (mFecha != null) {

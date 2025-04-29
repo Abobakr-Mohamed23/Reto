@@ -8,8 +8,10 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
 
     public ConsultaCompania() {
         initComponents();
+        txtNombre.setEnabled(false);
+        txtUbicacion.setEnabled(false);
+        jDateCompania.setEnabled(false);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -24,6 +26,8 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
         lblUbicacion = new javax.swing.JLabel();
         txtUbicacion = new javax.swing.JTextField();
         lblError = new javax.swing.JLabel();
+        jDateCompania = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -54,22 +58,22 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
         lblError.setForeground(new java.awt.Color(255, 0, 0));
         lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jLabel1.setText("Fecha ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCodigo)
                     .addComponent(lblNombre)
-                    .addComponent(lblUbicacion))
+                    .addComponent(lblUbicacion)
+                    .addComponent(jLabel1))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateCompania, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtCodigo)
                         .addGap(18, 18, 18)
@@ -78,8 +82,13 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
                     .addComponent(txtUbicacion))
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(73, Short.MAX_VALUE)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -103,7 +112,11 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUbicacion)
                     .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +127,7 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
             lblError.setText("");
             txtNombre.setText("");
             txtUbicacion.setText("");
+            jDateCompania.setDate(null);
             int codigo = Integer.parseInt(txtCodigo.getText());
             Compania_Discografica compania = AccesoCompania.consultar(codigo);
             if (compania == null) {
@@ -121,21 +135,22 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
             } else {
                 txtNombre.setText(compania.getNombreCompania());
                 txtUbicacion.setText(compania.getUbicacion());
+                jDateCompania.setDate(compania.getAnioFundacion());
             }
-        } 
-        catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             lblError.setText("El código de la compañía debe ser un número entero.");
-        }
-        catch (ClassNotFoundException cnfe) {
+        } catch (ClassNotFoundException cnfe) {
             cnfe.getStackTrace();
-             lblError.setText("Error al conectar con la base de datos.");
+            lblError.setText("Error al conectar con la base de datos.");
         } catch (SQLException sqle) {
-             lblError.setText("Error en la base de datos.");
+            lblError.setText("Error en la base de datos.");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private com.toedter.calendar.JDateChooser jDateCompania;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblNombre;
