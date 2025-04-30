@@ -1,71 +1,71 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
-/**
- *
- * @author DAM1A03
- */
 public class Cancion {
-     int ID_Cancion;
-    String Nombre_Cancion;
-    String Fecha_Lanzamiento;
-    Double Duracion;
-    int ID_Artista;
 
-    public Cancion(int ID_Cancion, String Nombre_Cancion, String Fecha_Lanzamiento, Double Duracion, int ID_Artista) {
-        this.ID_Cancion = ID_Cancion;
-        this.Nombre_Cancion = Nombre_Cancion;
-        this.Fecha_Lanzamiento = Fecha_Lanzamiento;
-        this.Duracion = Duracion;
-        this.ID_Artista = ID_Artista;
+    private int idCancion;
+    private String nombreCancion;
+    private String fechaLanzamiento;
+    private double duracion;
+    private int idArtista;   // FK
+    
+
+    public Cancion(int idCancion, String nombreCancion, String fechaLanzamiento, double duracion, int idArtista) {
+        this.idCancion = idCancion;
+        this.nombreCancion = nombreCancion;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.duracion = duracion;
+        this.idArtista = idArtista;
+       
     }
 
     @Override
     public String toString() {
-        return "Cancion{" + "ID_Cancion=" + ID_Cancion + ", Nombre_Cancion=" + Nombre_Cancion + ", Fecha_Lanzamiento=" + Fecha_Lanzamiento + ", Duracion=" + Duracion + ", ID_Artista=" + ID_Artista + '}';
+        return "Cancion{"
+                + "idCancion=" + idCancion
+                + ", nombreCancion='" + nombreCancion + '\''
+                + ", fechaLanzamiento='" + fechaLanzamiento + '\''
+                + ", duracion=" + duracion
+                + ", idArtista=" + idArtista               
+                + '}';
     }
 
-    public int getID_Cancion() {
-        return ID_Cancion;
+    public int getIdCancion() {
+        return idCancion;
     }
 
-    public void setID_Cancion(int ID_Cancion) {
-        this.ID_Cancion = ID_Cancion;
+    public void setIdCancion(int idCancion) {
+        this.idCancion = idCancion;
     }
 
-    public String getNombre_Cancion() {
-        return Nombre_Cancion;
+    public String getNombreCancion() {
+        return nombreCancion;
     }
 
-    public void setNombre_Cancion(String Nombre_Cancion) {
-        this.Nombre_Cancion = Nombre_Cancion;
+    public void setNombreCancion(String nombreCancion) {
+        this.nombreCancion = nombreCancion;
     }
 
-    public String getFecha_Lanzamiento() {
-        return Fecha_Lanzamiento;
+    public String getFechaLanzamiento() {
+        return fechaLanzamiento;
     }
 
-    public void setFecha_Lanzamiento(String Fecha_Lanzamiento) {
-        this.Fecha_Lanzamiento = Fecha_Lanzamiento;
+    public void setFechaLanzamiento(String fechaLanzamiento) {
+        this.fechaLanzamiento = fechaLanzamiento;
     }
 
-    public Double getDuracion() {
-        return Duracion;
+    public double getDuracion() {
+        return duracion;
     }
 
-    public void setDuracion(Double Duracion) {
-        this.Duracion = Duracion;
+    public void setDuracion(double duracion) {
+        this.duracion = duracion;
     }
 
-    public int getID_Artista() {
-        return ID_Artista;
+    public int getIdArtista() {
+        return idArtista;
     }
 
-    public void setID_Artista(int ID_Artista) {
-        this.ID_Artista = ID_Artista;
+    public void setIdArtista(int idArtista) {
+        this.idArtista = idArtista;
     }
-
 }

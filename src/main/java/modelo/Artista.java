@@ -1,71 +1,85 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package modelo;
 
-/**
- *
- * @author DAM1A03
- */
+import java.sql.Date;
+
 public class Artista {
-    int ID_Artista;
-     String NombreCompleto;
-     String Pais_Origen;
-     String Fecha_Nacimiento;
-     int ID_Compania;
- 
-     public Artista(int ID_Artista, String NombreCompleto, String Pais_Origen, String Fecha_Nacimiento, int ID_Compania) {
-         this.ID_Artista = ID_Artista;
-         this.NombreCompleto = NombreCompleto;
-         this.Pais_Origen = Pais_Origen;
-         this.Fecha_Nacimiento = Fecha_Nacimiento;
-         this.ID_Compania = ID_Compania;
-     }
- 
-     @Override
-     public String toString() {
-         return "Artista{" + "ID_Artista=" + ID_Artista + ", NombreCompleto=" + NombreCompleto + ", Pais_Origen=" + Pais_Origen + ", Fecha_Nacimiento=" + Fecha_Nacimiento + ", ID_Compania=" + ID_Compania + '}';
-     }
- 
-     public int getID_Artista() {
-         return ID_Artista;
-     }
- 
-     public void setID_Artista(int ID_Artista) {
-         this.ID_Artista = ID_Artista;
-     }
- 
-     public String getNombreCompleto() {
-         return NombreCompleto;
-     }
- 
-     public void setNombreCompleto(String NombreCompleto) {
-         this.NombreCompleto = NombreCompleto;
-     }
- 
-     public String getPais_Origen() {
-         return Pais_Origen;
-     }
- 
-     public void setPais_Origen(String Pais_Origen) {
-         this.Pais_Origen = Pais_Origen;
-     }
- 
-     public String getFecha_Nacimiento() {
-         return Fecha_Nacimiento;
-     }
- 
-     public void setFecha_Nacimiento(String Fecha_Nacimiento) {
-         this.Fecha_Nacimiento = Fecha_Nacimiento;
-     }
- 
-     public int getID_Compania() {
-         return ID_Compania;
-     }
- 
-     public void setID_Compania(int ID_Compania) {
-         this.ID_Compania = ID_Compania;
-     }
- 
+
+    private int idArtista;
+    private String nombreCompleto;
+    private String paisOrigen;
+    private Date fechaNacimiento;
+    private int idCompania; // FK: Compañía a la que pertenece
+
+    public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
+        this.idArtista = idArtista;
+        this.nombreCompleto = nombreCompleto;
+        this.paisOrigen = paisOrigen;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idCompania = idCompania;
+    }
+    
+    public Artista( String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
+        this.nombreCompleto = nombreCompleto;
+        this.paisOrigen = paisOrigen;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idCompania = idCompania;
+    }
+
+    @Override
+    public String toString() {
+        return "Artista{"
+                + "idArtista=" + idArtista
+                + ", nombreCompleto='" + nombreCompleto + '\''
+                + ", paisOrigen='" + paisOrigen + '\''
+                + ", fechaNacimiento='" + fechaNacimiento + '\''
+                + ", idCompania=" + idCompania
+                + '}';
+    }
+
+    public int getIdArtista() {
+        return idArtista;
+    }
+
+    public void setIdArtista(int idArtista) {
+        this.idArtista = idArtista;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getPaisOrigen() {
+        return paisOrigen;
+    }
+
+    public void setPaisOrigen(String paisOrigen) {
+        this.paisOrigen = paisOrigen;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public int getIdCompania() {
+        return idCompania;
+    }
+
+    public void setIdCompania(int idCompania) {
+        this.idCompania = idCompania;
+    }
 }
+
