@@ -27,9 +27,14 @@ public class Principal extends javax.swing.JFrame {
         menuEliminarCompania = new javax.swing.JMenuItem();
         menuInsertarCompania = new javax.swing.JMenuItem();
         menuActualizarCompa = new javax.swing.JMenuItem();
+        consultarCancionUno = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        consultarCancionTodos = new javax.swing.JMenuItem();
+        eliminarCancion = new javax.swing.JMenuItem();
+        insertarCancion = new javax.swing.JMenuItem();
+        actualizarCancion = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +82,42 @@ public class Principal extends javax.swing.JFrame {
         menuActualizarCompania.add(menuActualizarCompa);
 
         menuBar.add(menuActualizarCompania);
+
+        consultarCancionUno.setText("Cancion");
+
+        jMenuItem2.setText("Consultar Uno");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        consultarCancionUno.add(jMenuItem2);
+
+        consultarCancionTodos.setText("Consultar Todo");
+        consultarCancionTodos.setActionCommand("ConsultarTodos");
+        consultarCancionTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarCancionTodosActionPerformed(evt);
+            }
+        });
+        consultarCancionUno.add(consultarCancionTodos);
+
+        eliminarCancion.setText("Eliminar Cancion");
+        eliminarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarCancionActionPerformed(evt);
+            }
+        });
+        consultarCancionUno.add(eliminarCancion);
+
+        insertarCancion.setText("Insertar Cancion");
+        consultarCancionUno.add(insertarCancion);
+
+        actualizarCancion.setText("Actualizar Cancion");
+        actualizarCancion.setActionCommand("Actualizar Cancion");
+        consultarCancionUno.add(actualizarCancion);
+
+        menuBar.add(consultarCancionUno);
 
         setJMenuBar(menuBar);
 
@@ -139,6 +180,18 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuActualizarCompaActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void consultarCancionTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCancionTodosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consultarCancionTodosActionPerformed
+
+    private void eliminarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCancionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarCancionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,8 +229,14 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actualizarCancion;
+    private javax.swing.JMenuItem consultarCancionTodos;
+    private javax.swing.JMenu consultarCancionUno;
+    private javax.swing.JMenuItem eliminarCancion;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem insertarCancion;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem menuActualizarCompa;
     private javax.swing.JMenu menuActualizarCompania;
     private javax.swing.JMenuBar menuBar;
@@ -185,7 +244,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenuItem menuEliminarCompania;
     private javax.swing.JMenuItem menuInsertarCompania;
-
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;
