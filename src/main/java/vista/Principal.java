@@ -27,9 +27,9 @@ public class Principal extends javax.swing.JFrame {
         menuEliminarCompania = new javax.swing.JMenuItem();
         menuInsertarCompania = new javax.swing.JMenuItem();
         menuActualizarCompa = new javax.swing.JMenuItem();
+        Artista = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +77,9 @@ public class Principal extends javax.swing.JFrame {
         menuActualizarCompania.add(menuActualizarCompa);
 
         menuBar.add(menuActualizarCompania);
+
+        Artista.setText("Artista");
+        menuBar.add(Artista);
 
         setJMenuBar(menuBar);
 
@@ -176,6 +179,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Artista;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuActualizarCompa;
@@ -185,7 +189,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenuItem menuEliminarCompania;
     private javax.swing.JMenuItem menuInsertarCompania;
-
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;

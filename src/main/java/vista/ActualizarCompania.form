@@ -59,9 +59,9 @@
                                   <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jDateCompania" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="txtUbicacionActualizar" min="-2" pref="201" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtUbicacionActualizar" pref="201" max="32767" attributes="0"/>
+                                  <Component id="jDateCompania" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -76,7 +76,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtCodigo" min="-2" pref="99" max="-2" attributes="0"/>
+                                  <Component id="txtCodigo" min="-2" pref="114" max="-2" attributes="0"/>
                                   <Component id="lblValido" min="-2" pref="167" max="-2" attributes="0"/>
                                   <Component id="txtNombreActualizar" min="-2" pref="201" max="-2" attributes="0"/>
                               </Group>
@@ -120,10 +120,10 @@
                   <Component id="lblUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtUbicacionActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jDateCompania" min="-2" max="-2" attributes="0"/>
                   <Component id="lblUbicacion1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDateCompania" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -186,8 +186,6 @@
         <Property name="text" type="java.lang.String" value="Fecha"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateCompania">
-    </Component>
     <Component class="javax.swing.JButton" name="btnActualizarCompania">
       <Properties>
         <Property name="text" type="java.lang.String" value="Actualizar Compa&#xf1;&#xed;a"/>
@@ -217,6 +215,8 @@
     <Component class="javax.swing.JTextField" name="txtNombreActualizar">
     </Component>
     <Component class="javax.swing.JTextField" name="txtUbicacionActualizar">
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateCompania">
     </Component>
   </SubComponents>
 </Form>
