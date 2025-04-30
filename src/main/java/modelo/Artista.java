@@ -1,14 +1,16 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Artista {
 
     private int idArtista;
     private String nombreCompleto;
     private String paisOrigen;
-    private String fechaNacimiento;
+    private Date fechaNacimiento;
     private int idCompania; // FK: Compañía a la que pertenece
 
-    public Artista(int idArtista, String nombreCompleto, String paisOrigen, String fechaNacimiento, int idCompania) {
+    public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
         this.idArtista = idArtista;
         this.nombreCompleto = nombreCompleto;
         this.paisOrigen = paisOrigen;
@@ -51,11 +53,11 @@ public class Artista {
         this.paisOrigen = paisOrigen;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
