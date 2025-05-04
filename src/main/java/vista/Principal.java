@@ -28,6 +28,7 @@ public class Principal extends javax.swing.JFrame {
         menuInsertarCompania = new javax.swing.JMenuItem();
         menuActualizarCompa = new javax.swing.JMenuItem();
         Artista = new javax.swing.JMenu();
+        ArtistaConsultarTodos = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -79,6 +80,15 @@ public class Principal extends javax.swing.JFrame {
         menuBar.add(menuActualizarCompania);
 
         Artista.setText("Artista");
+
+        ArtistaConsultarTodos.setText("Consultar todos");
+        ArtistaConsultarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ArtistaConsultarTodosActionPerformed(evt);
+            }
+        });
+        Artista.add(ArtistaConsultarTodos);
+
         menuBar.add(Artista);
 
         setJMenuBar(menuBar);
@@ -110,10 +120,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuConsultarUnoActionPerformed
 
     private void menuConsultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarTodosActionPerformed
-        if (formularioConsultaTodos == null || formularioConsultaTodos.isClosed()) {
-            formularioConsultaTodos = new ConsultaTodosCompanias();
-            escritorio.add(formularioConsultaTodos);
-            formularioConsultaTodos.setVisible(true);
+        if (formularioConsultaTodosCompanias == null || formularioConsultaTodosCompanias.isClosed()) {
+            formularioConsultaTodosCompanias = new ConsultaTodosCompanias();
+            escritorio.add(formularioConsultaTodosCompanias);
+            formularioConsultaTodosCompanias.setVisible(true);
         }
     }//GEN-LAST:event_menuConsultarTodosActionPerformed
 
@@ -141,6 +151,14 @@ public class Principal extends javax.swing.JFrame {
             actualizarCompania.setVisible(true);
         }
     }//GEN-LAST:event_menuActualizarCompaActionPerformed
+
+    private void ArtistaConsultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistaConsultarTodosActionPerformed
+      if (formularioConsultaTodosArtistas == null || formularioConsultaTodosArtistas.isClosed()) {
+            formularioConsultaTodosArtistas = new ConsultarTodosArtistas() ;
+            escritorio.add(formularioConsultaTodosArtistas);
+            formularioConsultaTodosArtistas.setVisible(true);
+        }
+    }//GEN-LAST:event_ArtistaConsultarTodosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +198,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Artista;
+    private javax.swing.JMenuItem ArtistaConsultarTodos;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuActualizarCompa;
@@ -192,7 +211,8 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;
-    ConsultaTodosCompanias formularioConsultaTodos = null;
+    ConsultaTodosCompanias formularioConsultaTodosCompanias = null;
+    ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
     EliminarCompania eliminarCompania = null;
     InsertarCompania insertarCompania = null;
     ActualizarCompania actualizarCompania = null;
