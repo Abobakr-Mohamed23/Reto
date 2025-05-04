@@ -1,19 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
-/**
- *
- * @author 34631
- */
 public class Cancion {
+
     private int idCancion;
     private String nombreCancion;
     private String fechaLanzamiento;
     private double duracion;
-    private int idArtista;
+    private int idArtista;   // FK
+    
 
     public Cancion(int idCancion, String nombreCancion, String fechaLanzamiento, double duracion, int idArtista) {
         this.idCancion = idCancion;
@@ -21,20 +15,20 @@ public class Cancion {
         this.fechaLanzamiento = fechaLanzamiento;
         this.duracion = duracion;
         this.idArtista = idArtista;
+       
     }
 
     @Override
     public String toString() {
-        return "Cancion{" + "idCancion=" + idCancion 
-                + ", nombreCancion=" + nombreCancion 
-                + ", fechaLanzamiento=" + fechaLanzamiento 
-                + ", duracion=" + duracion 
-                + ", idArtista=" + idArtista + '}';
+        return "Cancion{"
+                + "idCancion=" + idCancion
+                + ", nombreCancion='" + nombreCancion + '\''
+                + ", fechaLanzamiento='" + fechaLanzamiento + '\''
+                + ", duracion=" + duracion
+                + ", idArtista=" + idArtista               
+                + '}';
     }
 
-    
-    
-    
     public int getIdCancion() {
         return idCancion;
     }
@@ -74,10 +68,4 @@ public class Cancion {
     public void setIdArtista(int idArtista) {
         this.idArtista = idArtista;
     }
-    
-    
-    
-    
-    
-    
 }

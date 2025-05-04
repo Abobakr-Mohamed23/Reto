@@ -1,0 +1,63 @@
+-- Tabla compañía
+CREATE TABLE compania (
+    idCompania INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nombreCompania VARCHAR(100) NOT NULL,
+    ubicacion VARCHAR(100),
+
+    anioFundacion DATE
+);
+
+
+
+-- Tabla artista
+CREATE TABLE artista (
+    idArtista INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nombreCompleto VARCHAR(100) NOT NULL,
+    paisOrigen VARCHAR(50),
+    fechaNacimiento DATE,
+    idCompania INT
+);
+
+-- Tabla canción
+CREATE TABLE cancion (
+    idCancion INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    nombreCancion VARCHAR(100) NOT NULL,
+    fechaLanzamiento DATE,
+    duracion INT,
+    idArtista INT,
+    idCompania INT
+);
+
+
+---------Insertar datos----------------
+
+-- Insertar compañías
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Sony Music', 'Estados Unidos', '1929');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Universal Music', 'Estados Unidos', '1934');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Warner Music', 'Estados Unidos', '1958');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('EMI', 'Reino Unido', '1931');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Indie Records', 'España', '2001');
+
+-- Insertar artistas
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Juanes', 'Colombia', '1972-08-09', 1);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Shakira', 'Colombia', '1977-02-02', 2);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Adele', 'Reino Unido', '1988-05-05', 2);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Bruno Mars', 'Estados Unidos', '1985-10-08', 3);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Rosalía', 'España', '1992-09-25', 5);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Dua Lipa', 'Reino Unido', '1995-08-22', 2);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Bad Bunny', 'Puerto Rico', '1994-03-10', 1);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Drake', 'Canadá', '1986-10-24', 3);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Taylor Swift', 'Estados Unidos', '1989-12-13', 2);
+INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Ed Sheeran', 'Reino Unido', '1991-02-17', 2);
+
+-- Insertar canciones
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('A Dios le Pido', '2002-07-07', 210, 1, 1);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Hips Don''t Lie', '2006-02-28', 218, 2, 2);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Rolling in the Deep', '2010-11-29', 228, 3, 2);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Uptown Funk', '2014-11-10', 269, 4, 3);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Malamente', '2018-05-30', 155, 5, 5);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('New Rules', '2017-07-02', 209, 6, 2);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Dakiti', '2020-10-30', 205, 7, 1);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('God''s Plan', '2018-01-19', 198, 8, 3);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Shake It Off', '2014-08-18', 242, 9, 2);
+INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista, idCompania) VALUES ('Shape of You', '2017-01-06', 233, 10, 2);
