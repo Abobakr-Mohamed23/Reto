@@ -1,10 +1,12 @@
 
 package vista;
+import acceso.AccesoArtista;
 import acceso.AccesoCancion;
 import acceso.AccesoCompania;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Artista;
 import modelo.Cancion;
 import modelo.Compania_Discografica;
 
@@ -194,7 +196,7 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
             for (Artista artista : AccesoArtista.consultarTodos()) {
                
               
-                comboBoxArtista.addItem(artista.getNombre());
+                comboBoxArtista.addItem(artista.getNombreCompleto());
                 
                 
             }
