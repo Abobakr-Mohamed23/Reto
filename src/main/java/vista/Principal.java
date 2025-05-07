@@ -298,8 +298,17 @@ public class Principal extends javax.swing.JFrame {
     ConsultarUnaCancion formularioConsultaUnaCancion = null;
     EliminarCancion eliminarCancion = null;
     InsertarCancion insertarCancion = null;
+  
+  /**
+     * *********************Artista****************************
+     */
+
+    ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
+    ConsultaArtista fomularioConsultaUnaArtista = null;
+   
 
     /**
      * **********VARIABLES***********************
      */
 }
+

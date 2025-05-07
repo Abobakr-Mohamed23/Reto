@@ -33,11 +33,13 @@ CREATE TABLE cancion (
 ---------Insertar datos----------------
 
 -- Insertar compañías
+
 INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Sony Music', 'Estados Unidos', '1972-08-09');
 INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Universal Music', 'Estados Unidos', '1972-08-09');
 INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Warner Music', 'Estados Unidos', '1972-08-09');
 INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('EMI', 'Reino Unido', '1972-08-09');
 INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Indie Records', 'España', '1972-08-09');
+
 
 -- Insertar artistas
 INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Juanes', 'Colombia', '1972-08-09', 1);

@@ -1,3 +1,9 @@
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
 package modelo;
 
 import java.sql.Date;
@@ -12,6 +18,13 @@ public class Artista {
 
     public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
         this.idArtista = idArtista;
+        this.nombreCompleto = nombreCompleto;
+        this.paisOrigen = paisOrigen;
+        this.fechaNacimiento = fechaNacimiento;
+        this.idCompania = idCompania;
+    }
+    
+    public Artista( String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
         this.nombreCompleto = nombreCompleto;
         this.paisOrigen = paisOrigen;
         this.fechaNacimiento = fechaNacimiento;
@@ -69,3 +82,4 @@ public class Artista {
         this.idCompania = idCompania;
     }
 }
+

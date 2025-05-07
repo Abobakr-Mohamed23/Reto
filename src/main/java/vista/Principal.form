@@ -57,6 +57,27 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="Artista">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Artista"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="ArtistaConsultarTodos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultar todos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ArtistaConsultarTodosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="artistaConsultarUno">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultar uno"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaConsultarUnoActionPerformed"/>
+              </Events>
+            </MenuItem>
         <Menu class="javax.swing.JMenu" name="consultarCancionUno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancion"/>
