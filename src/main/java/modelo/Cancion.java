@@ -8,10 +8,10 @@ public class Cancion {
     private String nombreCancion;
     private Date fechaLanzamiento;
     private double duracion;
-    private int idArtista;   // FK
+    private Artista idArtista;   
     
 
-    public Cancion(int idCancion, String nombreCancion, Date fechaLanzamiento, double duracion, int idArtista) {
+    public Cancion(int idCancion, String nombreCancion, Date fechaLanzamiento, double duracion, Artista idArtista) {
         this.idCancion = idCancion;
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -20,7 +20,7 @@ public class Cancion {
        
     }
     
-     public Cancion( String nombreCancion, Date fechaLanzamiento, double duracion, int idArtista) {
+     public Cancion( String nombreCancion, Date fechaLanzamiento, double duracion, Artista idArtista) {
         
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -72,11 +72,11 @@ public class Cancion {
         this.duracion = duracion;
     }
 
-    public int getIdArtista() {
+    public Artista getIdArtista() {
         return idArtista;
     }
 
-    public void setIdArtista(int idArtista) {
+    public void setIdArtista(Artista idArtista) {
         this.idArtista = idArtista;
     }
 }

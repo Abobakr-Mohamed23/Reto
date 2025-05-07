@@ -31,7 +31,7 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         lblErrorInsertarCancion = new javax.swing.JLabel();
         buttonAgregarCancion = new java.awt.Button();
         lblConfirmacionInsertarCancion = new javax.swing.JLabel();
-        comboBoxArtista = new javax.swing.JComboBox<>();
+        comboBoxArtista = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         txtArtistaCancion1 = new javax.swing.JTextField();
         jTextNombreCancionAInsertar = new javax.swing.JTextField();
@@ -166,8 +166,10 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void buttonAgregarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarCancionActionPerformed
         try {
+
             java.util.Date mFecha = jdateFechaLanzamientoCancionAinsertar.getDate();
             java.sql.Date anioFundacion = null;
             if (mFecha != null) {
@@ -176,15 +178,21 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
 
             String nombreCancion = jTextNombreCancionAInsertar.getText();
             Double duracion = Double.parseDouble(jTextDuracionCancionAInsertar.getText());
-            int IdArtista = Integer.parseInt(txtArtistaCancion1.getText());
 
-            Cancion cancion = new Cancion(nombreCancion, anioFundacion, duracion, IdArtista);
-            AccesoCancion.insertar(cancion);
-            lblConfirmacionInsertarCancion.setText("Insertado correctamente");
+            Artista artista = (Artista) comboBoxArtista.getSelectedItem();
 
-            jTextNombreCancionAInsertar.setText("");
-            jdateFechaLanzamientoCancionAinsertar.setDate(null);
-            jTextDuracionCancionAInsertar.setText("");
+            if (artista != null) {
+
+                Cancion cancion = new Cancion(nombreCancion, anioFundacion, duracion, artista);
+
+                AccesoCancion.insertar(cancion);
+
+                lblConfirmacionInsertarCancion.setText("Insertado correctamente");
+
+                jTextNombreCancionAInsertar.setText("");
+                jdateFechaLanzamientoCancionAinsertar.setDate(null);
+                jTextDuracionCancionAInsertar.setText("");
+            }
 
         } catch (NumberFormatException nfe) {
             lblErrorInsertarCancion.setText("El código de la canción debe ser un número entero.");
@@ -200,21 +208,28 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
 
     private void comboBoxArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxArtistaActionPerformed
 
-        String artistaSeleccionado = (String) comboBoxArtista.getSelectedItem();
+        Artista artistaSeleccionado = (Artista) comboBoxArtista.getSelectedItem();
 
-        txtArtistaCancion1.setText(artistaSeleccionado);
+        if (artistaSeleccionado != null) {
+
+            int idArtista = artistaSeleccionado.getIdArtista();
+             
+            txtArtistaCancion1.setText(artistaSeleccionado.getNombreCompleto());
+            
+        }
 
 
     }//GEN-LAST:event_comboBoxArtistaActionPerformed
 
-    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formInternalFrameClosed
-
     private void cargarDatosArtista() {
+
         try {
             for (Artista artista : AccesoArtista.consultarTodos()) {
-                comboBoxArtista.addItem(artista.getNombreCompleto());
+
+                comboBoxArtista.addItem(artista);
+                
+                
+
             }
 
         } catch (ClassNotFoundException ex) {
@@ -222,12 +237,17 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
 
         }
+
     }
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonAgregarCancion;
-    private javax.swing.JComboBox<String> comboBoxArtista;
+    private javax.swing.JComboBox comboBoxArtista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelTextoDuracionCancion;
     private javax.swing.JLabel jLabelTextoFechaLanzamientoCancion;

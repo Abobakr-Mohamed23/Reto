@@ -1,4 +1,3 @@
-
 package vista;
 
 import acceso.AccesoCancion;
@@ -7,17 +6,15 @@ import modelo.Cancion;
 
 public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
 
-    
     public ConsultarUnaCancion() {
         initComponents();
         //variables
         txtNombreConsultarCancion.setEnabled(false);
         textFechaLanzamineto.setEnabled(false);
         txtDuracionConsultaUnaCancionEntrada.setEnabled(false);
-        
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -127,31 +124,29 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
 
     private void botonBuscarConsultarUnaCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarConsultarUnaCancionActionPerformed
         try {
-            
+
             java.util.Date mFecha = textFechaLanzamineto.getDate();
             java.sql.Date anioFundacion = null;
 
             if (mFecha != null) {
                 anioFundacion = new java.sql.Date(mFecha.getTime());
             }
-            
-            
+
             lblErrorConsultarUnaCancion.setText("");
             txtNombreConsultarCancion.setText("");
             textFechaLanzamineto.setDate(null);
             txtDuracionConsultaUnaCancionEntrada.setText("");
-            
-            
+
             int codigo = Integer.parseInt(txtCodigoConsultarUnaCancionEntrada.getText());
             Cancion cancion = AccesoCancion.consultar(codigo);
-            
+
             if (cancion == null) {
                 lblErrorConsultarUnaCancion.setText("No existe ninguna canción con ese código.");
             } else {
                 txtNombreConsultarCancion.setText(cancion.getNombreCancion());
-                textFechaLanzamineto.setDate(mFecha);
+                textFechaLanzamineto.setDate(cancion.getFechaLanzamiento());
                 txtDuracionConsultaUnaCancionEntrada.setText(String.valueOf(cancion.getDuracion()));
-                
+
             }
         } catch (NumberFormatException nfe) {
             lblErrorConsultarUnaCancion.setText("El código de la canción debe ser un número entero.");

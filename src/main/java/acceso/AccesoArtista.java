@@ -1,6 +1,5 @@
 package acceso;
 
-
 import acceso.DerbyUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,19 +13,19 @@ import modelo.Artista;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author DAM1A03
  */
 public class AccesoArtista {
+
     public static void insertar(Artista artista)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) "
-            + " VALUES('" + artista.getNombreCompleto() + "', '" + artista.getPaisOrigen() + "', '" + artista.getFechaNacimiento() + "', '" + artista.getIdCompania() + "')";
+                    + " VALUES('" + artista.getNombreCompleto() + "', '" + artista.getPaisOrigen() + "', '" + artista.getFechaNacimiento() + "', '" + artista.getIdCompania() + "')";
 
             Statement sentencia = conexion.createStatement();
             sentencia.executeUpdate(sentenciaInsertar);
@@ -52,7 +51,7 @@ public class AccesoArtista {
                         resultados.getString("nombreCompleto"),
                         resultados.getString("paisOrigen"),
                         resultados.getDate("fechaNacimiento"),
-                        resultados.getInt("idCompania"));
+                        AccesoCompania.consultar(resultados.getInt("idCompania")));
 
                 listaCompania.add(artista);
             }
@@ -74,12 +73,12 @@ public class AccesoArtista {
             Statement sentencia = conexion.createStatement();
             ResultSet resultados = sentencia.executeQuery(sentenciaConsultar);
             if (resultados.next()) {
-               artista = new Artista(
+                artista = new Artista(
                         resultados.getInt("idArtista"),
                         resultados.getString("nombreCompleto"),
                         resultados.getString("paisOrigen"),
                         resultados.getDate("fechaNacimiento"),
-                        resultados.getInt("idCompania"));
+                         AccesoCompania.consultar(resultados.getInt("idCompania")));
 
             }
             resultados.close();
@@ -93,7 +92,7 @@ public class AccesoArtista {
     public static boolean modificar(Artista artista)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-       
+
         try {
             conexion = DerbyUtil.abrirConexion();
 
@@ -106,7 +105,7 @@ public class AccesoArtista {
 
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
-               return true;
+                return true;
             }
             sentencia.close();
         } finally {
@@ -118,8 +117,6 @@ public class AccesoArtista {
     public static boolean eliminar(int codigo)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-
-
 
         try {
             conexion = DerbyUtil.abrirConexion();
@@ -157,5 +154,4 @@ public class AccesoArtista {
         return numEliminados;
     }
 
-    
 }

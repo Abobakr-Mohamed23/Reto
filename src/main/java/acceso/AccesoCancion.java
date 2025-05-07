@@ -3,20 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package acceso;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Artista;
 import modelo.Cancion;
+
 /**
  *
  * @author DAM1A13
  */
 public class AccesoCancion {
-    
-     public static List<Cancion> consultarTodos() throws ClassNotFoundException, SQLException {
+
+    public static List<Cancion> consultarTodos() throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         Cancion cancion;
         List<Cancion> listaCanciones = new ArrayList<>();
@@ -25,12 +28,14 @@ public class AccesoCancion {
             String sentenciaConsultar = "SELECT * FROM cancion"; //preguntar si esta bien esto
             Statement sentencia = conexion.createStatement();
             ResultSet resultados = sentencia.executeQuery(sentenciaConsultar);
+
             while (resultados.next()) {
+
                 cancion = new Cancion(resultados.getInt("idCancion"),
                         resultados.getString("nombreCancion"),
                         resultados.getDate("fechaLanzamiento"),
                         resultados.getDouble("duracion"),
-                        resultados.getInt("idArtista"));
+                        AccesoArtista.consultar(resultados.getInt("idArtista")));
 
                 listaCanciones.add(cancion);
             }
@@ -41,21 +46,23 @@ public class AccesoCancion {
         }
         return listaCanciones;
     }
-     
-      public static Cancion consultar(int codigo)throws ClassNotFoundException, SQLException {
+
+    public static Cancion consultar(int codigo) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         Cancion cancion = null;
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaConsultar = "SELECT * FROM compania WHERE idCancion = " + codigo; //preguntar si esta bien esto
+            String sentenciaConsultar = "SELECT * FROM cancion WHERE idCancion = " + codigo;
             Statement sentencia = conexion.createStatement();
             ResultSet resultados = sentencia.executeQuery(sentenciaConsultar);
             if (resultados.next()) {
+
+           
                 cancion = new Cancion(resultados.getInt("idCancion"),
                         resultados.getString("nombreCancion"),
-                        resultados.getDate("fechaLanzamiento"),
+                          resultados.getDate("fechaLanzamiento"),
                         resultados.getDouble("duracion"),
-                        resultados.getInt("idArtista"));
+                        AccesoArtista.consultar(resultados.getInt("idArtista")));
 
             }
             resultados.close();
@@ -65,21 +72,18 @@ public class AccesoCancion {
         }
         return cancion;
     }
-      
-    
-    
-       public static void insertar(Cancion cancion)throws ClassNotFoundException, SQLException {
+
+    public static void insertar(Cancion cancion) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-        
+
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaInsertar = "INSERT INTO cancion (nombreCancion, "
                     + "fechaLanzamiento, duracion, idArtista) "
-
                     + " VALUES('" + cancion.getNombreCancion() + "', '"
-                    + cancion.getFechaLanzamiento()+ "', '"
-                    + cancion.getDuracion()+
-                    + cancion.getIdArtista()+"')";
+                    + cancion.getFechaLanzamiento() + "', '"
+                    + cancion.getDuracion()
+                    + +cancion.getIdArtista().getIdArtista() + "')";
 
             Statement sentencia = conexion.createStatement();
             sentencia.executeUpdate(sentenciaInsertar);
@@ -88,22 +92,23 @@ public class AccesoCancion {
             DerbyUtil.cerrarConexion(conexion);
         }
     }
-       public static boolean modificar(Cancion cancion) throws ClassNotFoundException, SQLException {
+
+    public static boolean modificar(Cancion cancion) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-       
+
         try {
             conexion = DerbyUtil.abrirConexion();
 
             String sentenciaActualizar = "UPDATE cancion SET "
                     + " nombreCancion = '" + cancion.getNombreCancion() + "', "
-                    + " fechaLanzamiento = '" + cancion.getFechaLanzamiento()+ "', "
-                    + " duracion = '" + cancion.getDuracion()+ "'"
-                    + " idArtista = '" + cancion.getIdArtista()+ "'"
+                    + " fechaLanzamiento = '" + cancion.getFechaLanzamiento() + "', "
+                    + " duracion = '" + cancion.getDuracion() + "'"
+                    + " idArtista = '" + cancion.getIdArtista() + "'"
                     + " WHERE idCancion = " + cancion.getIdCancion();
 
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
-               return true;
+                return true;
             }
             sentencia.close();
         } finally {
@@ -111,10 +116,8 @@ public class AccesoCancion {
         }
         return false;
     }
-    
-   
-    
-    public static boolean eliminar(int codigo)throws ClassNotFoundException, SQLException {
+
+    public static boolean eliminar(int codigo) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
 
         try {
@@ -135,6 +138,5 @@ public class AccesoCancion {
         return false;
 
     }
-    
-    
+
 }
