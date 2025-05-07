@@ -1,27 +1,24 @@
-
 package vista;
+
+import acceso.AccesoArtista;
 import acceso.AccesoCancion;
 import acceso.AccesoCompania;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Artista;
 import modelo.Cancion;
 import modelo.Compania_Discografica;
 
-
-
-
-
 public class InsertarCancion extends javax.swing.JInternalFrame {
 
-   
     public InsertarCancion() {
         initComponents();
         lblErrorInsertarCancion.setText("");
         cargarDatosArtista();
+        txtArtistaCancion1.setEnabled(false);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,6 +36,28 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         txtArtistaCancion1 = new javax.swing.JTextField();
         jTextNombreCancionAInsertar = new javax.swing.JTextField();
         jTextDuracionCancionAInsertar = new javax.swing.JTextField();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setVisible(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabelTituloInsertarCancion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelTituloInsertarCancion.setText("Insertar Canción");
@@ -104,9 +123,9 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
                         .addGap(261, 261, 261)
                         .addComponent(jLabelTituloInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                        .addGap(289, 289, 289)
+                        .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,9 +156,9 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
                                 .addComponent(comboBoxArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtArtistaCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jTextNombreCancionAInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
+                .addGap(57, 57, 57))
         );
 
         buttonAgregarCancion.getAccessibleContext().setAccessibleName("botonAgregarCancion");
@@ -148,25 +167,26 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAgregarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarCancionActionPerformed
-       try{
-           java.util.Date mFecha =jdateFechaLanzamientoCancionAinsertar.getDate();
-           java.sql.Date anioFundacion = null;
-           if(mFecha != null){
-               anioFundacion = new java.sql.Date(mFecha.getTime());
-           }
-           String nombreCancion = jTextNombreCancionAInsertar.getText();
-           String duracion = jTextDuracionCancionAInsertar.getText();
-           
-           Cancion cancion = new Cancion(nombreCancion, duracion, ERROR, WIDTH);
-           AccesoCancion.insertar(cancion);
-           lblConfirmacionInsertarCancion.setText("Insertado correctamente");
-           
-           jTextNombreCancionAInsertar.setText("");
-           jdateFechaLanzamientoCancionAinsertar.setDate(null);
-           jTextDuracionCancionAInsertar.setText("");
-           
-           
-       } catch (NumberFormatException nfe) {
+        try {
+            java.util.Date mFecha = jdateFechaLanzamientoCancionAinsertar.getDate();
+            java.sql.Date anioFundacion = null;
+            if (mFecha != null) {
+                anioFundacion = new java.sql.Date(mFecha.getTime());
+            }
+
+            String nombreCancion = jTextNombreCancionAInsertar.getText();
+            Double duracion = Double.parseDouble(jTextDuracionCancionAInsertar.getText());
+            int IdArtista = Integer.parseInt(txtArtistaCancion1.getText());
+
+            Cancion cancion = new Cancion(nombreCancion, anioFundacion, duracion, IdArtista);
+            AccesoCancion.insertar(cancion);
+            lblConfirmacionInsertarCancion.setText("Insertado correctamente");
+
+            jTextNombreCancionAInsertar.setText("");
+            jdateFechaLanzamientoCancionAinsertar.setDate(null);
+            jTextDuracionCancionAInsertar.setText("");
+
+        } catch (NumberFormatException nfe) {
             lblErrorInsertarCancion.setText("El código de la canción debe ser un número entero.");
             lblConfirmacionInsertarCancion.setText("");
         } catch (ClassNotFoundException cnfe) {
@@ -179,35 +199,31 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_buttonAgregarCancionActionPerformed
 
     private void comboBoxArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxArtistaActionPerformed
-       
-        
-       
-        
-        
-        
+
+        String artistaSeleccionado = (String) comboBoxArtista.getSelectedItem();
+
+        txtArtistaCancion1.setText(artistaSeleccionado);
+
+
     }//GEN-LAST:event_comboBoxArtistaActionPerformed
 
-    
-    
-     private void cargarDatosArtista(){
-         try {
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
+
+    private void cargarDatosArtista() {
+        try {
             for (Artista artista : AccesoArtista.consultarTodos()) {
-               
-              
-                comboBoxArtista.addItem(artista.getNombre());
-                
-                
+                comboBoxArtista.addItem(artista.getNombreCompleto());
             }
-            
-            
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InsertarCancion.class.getName()).log(Level.SEVERE, null, ex);
+
         } catch (SQLException ex) {
-            Logger.getLogger(InsertarCancion.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonAgregarCancion;

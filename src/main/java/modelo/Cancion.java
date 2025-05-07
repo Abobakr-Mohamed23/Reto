@@ -1,15 +1,17 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Cancion {
 
     private int idCancion;
     private String nombreCancion;
-    private String fechaLanzamiento;
+    private Date fechaLanzamiento;
     private double duracion;
     private int idArtista;   // FK
     
 
-    public Cancion(int idCancion, String nombreCancion, String fechaLanzamiento, double duracion, int idArtista) {
+    public Cancion(int idCancion, String nombreCancion, Date fechaLanzamiento, double duracion, int idArtista) {
         this.idCancion = idCancion;
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -18,7 +20,7 @@ public class Cancion {
        
     }
     
-     public Cancion( String nombreCancion, String fechaLanzamiento, double duracion, int idArtista) {
+     public Cancion( String nombreCancion, Date fechaLanzamiento, double duracion, int idArtista) {
         
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -54,11 +56,11 @@ public class Cancion {
         this.nombreCancion = nombreCancion;
     }
 
-    public String getFechaLanzamiento() {
+    public Date getFechaLanzamiento() {
         return fechaLanzamiento;
     }
 
-    public void setFechaLanzamiento(String fechaLanzamiento) {
+    public void setFechaLanzamiento(Date fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 

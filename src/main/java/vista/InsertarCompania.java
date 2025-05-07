@@ -44,6 +44,10 @@ public class InsertarCompania extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(jTree1);
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Insertar compañía");
 

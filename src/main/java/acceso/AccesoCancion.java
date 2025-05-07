@@ -28,7 +28,7 @@ public class AccesoCancion {
             while (resultados.next()) {
                 cancion = new Cancion(resultados.getInt("idCancion"),
                         resultados.getString("nombreCancion"),
-                        resultados.getString("fechaLanzamiento"),
+                        resultados.getDate("fechaLanzamiento"),
                         resultados.getDouble("duracion"),
                         resultados.getInt("idArtista"));
 
@@ -53,7 +53,7 @@ public class AccesoCancion {
             if (resultados.next()) {
                 cancion = new Cancion(resultados.getInt("idCancion"),
                         resultados.getString("nombreCancion"),
-                        resultados.getString("fechaLanzamiento"),
+                        resultados.getDate("fechaLanzamiento"),
                         resultados.getDouble("duracion"),
                         resultados.getInt("idArtista"));
 
