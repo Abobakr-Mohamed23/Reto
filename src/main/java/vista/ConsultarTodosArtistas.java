@@ -75,7 +75,7 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("Listado de Compañías");
+        lblTitulo.setText("Listado de Artistas");
 
         lblError.setForeground(new java.awt.Color(255, 0, 51));
         lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
