@@ -29,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
         menuActualizarCompa = new javax.swing.JMenuItem();
         Artista = new javax.swing.JMenu();
         ArtistaConsultarTodos = new javax.swing.JMenuItem();
+        artistaConsultarUno = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -88,6 +89,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         Artista.add(ArtistaConsultarTodos);
+
+        artistaConsultarUno.setText("Consultar uno");
+        artistaConsultarUno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artistaConsultarUnoActionPerformed(evt);
+            }
+        });
+        Artista.add(artistaConsultarUno);
 
         menuBar.add(Artista);
 
@@ -160,6 +169,14 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ArtistaConsultarTodosActionPerformed
 
+    private void artistaConsultarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaConsultarUnoActionPerformed
+        if (fomularioConsultaUnaArtista == null || fomularioConsultaUnaArtista.isClosed()) {
+            fomularioConsultaUnaArtista = new ConsultaArtista();
+            escritorio.add(fomularioConsultaUnaArtista);
+            fomularioConsultaUnaArtista.setVisible(true);
+        }
+    }//GEN-LAST:event_artistaConsultarUnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,6 +216,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Artista;
     private javax.swing.JMenuItem ArtistaConsultarTodos;
+    private javax.swing.JMenuItem artistaConsultarUno;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuActualizarCompa;
@@ -213,6 +231,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultaCompania fomularioConsultaUno = null;
     ConsultaTodosCompanias formularioConsultaTodosCompanias = null;
     ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
+    ConsultaArtista fomularioConsultaUnaArtista = null;
     EliminarCompania eliminarCompania = null;
     InsertarCompania insertarCompania = null;
     ActualizarCompania actualizarCompania = null;
