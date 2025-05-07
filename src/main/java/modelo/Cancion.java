@@ -8,7 +8,7 @@ public class Cancion {
     private String nombreCancion;
     private Date fechaLanzamiento;
     private double duracion;
-    private Artista idArtista;   
+    private Artista Artista;   
     
 
     public Cancion(int idCancion, String nombreCancion, Date fechaLanzamiento, double duracion, Artista idArtista) {
@@ -16,7 +16,7 @@ public class Cancion {
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
         this.duracion = duracion;
-        this.idArtista = idArtista;
+        this.Artista = idArtista;
        
     }
     
@@ -25,7 +25,7 @@ public class Cancion {
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
         this.duracion = duracion;
-        this.idArtista = idArtista;
+        this.Artista = idArtista;
        
     }
 
@@ -36,7 +36,7 @@ public class Cancion {
                 + ", nombreCancion='" + nombreCancion + '\''
                 + ", fechaLanzamiento='" + fechaLanzamiento + '\''
                 + ", duracion=" + duracion
-                + ", idArtista=" + idArtista               
+                + ", idArtista=" + Artista               
                 + '}';
     }
 
@@ -73,10 +73,10 @@ public class Cancion {
     }
 
     public Artista getIdArtista() {
-        return idArtista;
+        return Artista;
     }
 
     public void setIdArtista(Artista idArtista) {
-        this.idArtista = idArtista;
+        this.Artista = idArtista;
     }
 }
