@@ -23,7 +23,7 @@ public class Principal extends javax.swing.JFrame {
         consultarUnaCancion = new javax.swing.JMenuItem();
         menuConsultarTodasCanciones = new javax.swing.JMenuItem();
         eliminarCancionMenuItem = new javax.swing.JMenuItem();
-        insertarCancion = new javax.swing.JMenuItem();
+        menuInsertarCancion = new javax.swing.JMenuItem();
         actualizarCancion = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -108,8 +108,13 @@ public class Principal extends javax.swing.JFrame {
         });
         consultarCancionUno.add(eliminarCancionMenuItem);
 
-        insertarCancion.setText("Insertar Canción");
-        consultarCancionUno.add(insertarCancion);
+        menuInsertarCancion.setText("Insertar Canción");
+        menuInsertarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInsertarCancionActionPerformed(evt);
+            }
+        });
+        consultarCancionUno.add(menuInsertarCancion);
 
         actualizarCancion.setText("Actualizar Canción");
         consultarCancionUno.add(actualizarCancion);
@@ -215,6 +220,16 @@ public class Principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_consultarCancionUnoActionPerformed
+
+    private void menuInsertarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInsertarCancionActionPerformed
+       
+          if (insertarCancion == null || insertarCancion.isClosed()) {
+            insertarCancion = new InsertarCancion();
+            escritorio.add(insertarCancion);
+            insertarCancion.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_menuInsertarCancionActionPerformed
   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -255,7 +270,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultarUnaCancion;
     private javax.swing.JMenuItem eliminarCancionMenuItem;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenuItem insertarCancion;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuActualizarCompa;
     private javax.swing.JMenu menuActualizarCompania;
@@ -264,6 +278,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuConsultarTodos;
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenuItem menuEliminarCompania;
+    private javax.swing.JMenuItem menuInsertarCancion;
     private javax.swing.JMenuItem menuInsertarCompania;
     // End of variables declaration//GEN-END:variables
 
@@ -282,6 +297,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultarTodasCanciones formularioConsultarTodasCanciones = null;
     ConsultarUnaCancion formularioConsultaUnaCancion = null;
     EliminarCancion eliminarCancion = null;
+    InsertarCancion insertarCancion = null;
 
     /**
      * **********VARIABLES***********************

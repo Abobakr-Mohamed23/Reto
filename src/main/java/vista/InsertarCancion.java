@@ -1,8 +1,12 @@
 
 package vista;
 import acceso.AccesoCancion;
+import acceso.AccesoCompania;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Cancion;
+import modelo.Compania_Discografica;
 
 
 
@@ -14,6 +18,7 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
     public InsertarCancion() {
         initComponents();
         lblErrorInsertarCancion.setText("");
+        cargarDatosArtista();
     }
 
     
@@ -25,14 +30,15 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         jLabelTextoNombreCancion = new javax.swing.JLabel();
         jLabelTextoFechaLanzamientoCancion = new javax.swing.JLabel();
         jLabelTextoDuracionCancion = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextNombreCancionAInsertar = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextDuracionCancionAInsertar = new javax.swing.JTextArea();
         jdateFechaLanzamientoCancionAinsertar = new com.toedter.calendar.JDateChooser();
         lblErrorInsertarCancion = new javax.swing.JLabel();
         buttonAgregarCancion = new java.awt.Button();
         lblConfirmacionInsertarCancion = new javax.swing.JLabel();
+        comboBoxArtista = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        txtArtistaCancion1 = new javax.swing.JTextField();
+        jTextNombreCancionAInsertar = new javax.swing.JTextField();
+        jTextDuracionCancionAInsertar = new javax.swing.JTextField();
 
         jLabelTituloInsertarCancion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelTituloInsertarCancion.setText("Insertar Canción");
@@ -42,14 +48,6 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         jLabelTextoFechaLanzamientoCancion.setText("Fecha de Lanzamiento");
 
         jLabelTextoDuracionCancion.setText("Duración");
-
-        jTextNombreCancionAInsertar.setColumns(20);
-        jTextNombreCancionAInsertar.setRows(5);
-        jScrollPane1.setViewportView(jTextNombreCancionAInsertar);
-
-        jTextDuracionCancionAInsertar.setColumns(20);
-        jTextDuracionCancionAInsertar.setRows(5);
-        jScrollPane3.setViewportView(jTextDuracionCancionAInsertar);
 
         lblErrorInsertarCancion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblErrorInsertarCancion.setForeground(new java.awt.Color(204, 0, 0));
@@ -64,6 +62,14 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
 
         lblConfirmacionInsertarCancion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
+        comboBoxArtista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxArtistaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Artista");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,30 +77,36 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addGap(273, 273, 273)
                         .addComponent(lblErrorInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblConfirmacionInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)
+                                .addGap(27, 27, 27)
+                                .addComponent(comboBoxArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(txtArtistaCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblConfirmacionInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelTextoFechaLanzamientoCancion)
                                     .addComponent(jLabelTextoDuracionCancion)
                                     .addComponent(jLabelTextoNombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jdateFechaLanzamientoCancionAinsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelTituloInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jdateFechaLanzamientoCancionAinsertar, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                                    .addComponent(jTextNombreCancionAInsertar)
+                                    .addComponent(jTextDuracionCancionAInsertar)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(261, 261, 261)
+                        .addComponent(jLabelTituloInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,24 +116,30 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16)
                 .addComponent(lblErrorInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabelTextoNombreCancion, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelTextoFechaLanzamientoCancion)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabelTextoDuracionCancion))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jdateFechaLanzamientoCancionAinsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblConfirmacionInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addComponent(jLabelTextoNombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jdateFechaLanzamientoCancionAinsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextDuracionCancionAInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelTextoFechaLanzamientoCancion)
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabelTextoDuracionCancion)))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblConfirmacionInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(comboBoxArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtArtistaCancion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jTextNombreCancionAInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
 
         buttonAgregarCancion.getAccessibleContext().setAccessibleName("botonAgregarCancion");
@@ -139,7 +157,7 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
            String nombreCancion = jTextNombreCancionAInsertar.getText();
            String duracion = jTextDuracionCancionAInsertar.getText();
            
-           Cancion cancion = new Cancion(nombreCancion, duracion, anioFundacion);
+           Cancion cancion = new Cancion(nombreCancion, duracion, ERROR, WIDTH);
            AccesoCancion.insertar(cancion);
            lblConfirmacionInsertarCancion.setText("Insertado correctamente");
            
@@ -160,19 +178,50 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_buttonAgregarCancionActionPerformed
 
+    private void comboBoxArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxArtistaActionPerformed
+       
+        
+       
+        
+        
+        
+    }//GEN-LAST:event_comboBoxArtistaActionPerformed
+
+    
+    
+     private void cargarDatosArtista(){
+         try {
+            for (Artista artista : AccesoArtista.consultarTodos()) {
+               
+              
+                comboBoxArtista.addItem(artista.getNombre());
+                
+                
+            }
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(InsertarCancion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertarCancion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonAgregarCancion;
+    private javax.swing.JComboBox<String> comboBoxArtista;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelTextoDuracionCancion;
     private javax.swing.JLabel jLabelTextoFechaLanzamientoCancion;
     private javax.swing.JLabel jLabelTextoNombreCancion;
     private javax.swing.JLabel jLabelTituloInsertarCancion;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextDuracionCancionAInsertar;
-    private javax.swing.JTextArea jTextNombreCancionAInsertar;
+    private javax.swing.JTextField jTextDuracionCancionAInsertar;
+    private javax.swing.JTextField jTextNombreCancionAInsertar;
     private com.toedter.calendar.JDateChooser jdateFechaLanzamientoCancionAinsertar;
     private javax.swing.JLabel lblConfirmacionInsertarCancion;
     private javax.swing.JLabel lblErrorInsertarCancion;
+    private javax.swing.JTextField txtArtistaCancion1;
     // End of variables declaration//GEN-END:variables
 }

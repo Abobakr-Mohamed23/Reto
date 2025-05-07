@@ -102,10 +102,11 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblErrorConsultarUnaCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tituloCodigoConsultarUnaCancion)
-                    .addComponent(botonBuscarConsultarUnaCancion)
-                    .addComponent(txtCodigoConsultarUnaCancionEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCodigoConsultarUnaCancionEntrada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tituloCodigoConsultarUnaCancion)
+                        .addComponent(botonBuscarConsultarUnaCancion)))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tituloNombreConsultarUnaCancion)
@@ -126,6 +127,15 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
 
     private void botonBuscarConsultarUnaCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarConsultarUnaCancionActionPerformed
         try {
+            
+            java.util.Date mFecha = textFechaLanzamineto.getDate();
+            java.sql.Date anioFundacion = null;
+
+            if (mFecha != null) {
+                anioFundacion = new java.sql.Date(mFecha.getTime());
+            }
+            
+            
             lblErrorConsultarUnaCancion.setText("");
             txtNombreConsultarCancion.setText("");
             textFechaLanzamineto.setDate(null);
@@ -139,7 +149,7 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
                 lblErrorConsultarUnaCancion.setText("No existe ninguna canción con ese código.");
             } else {
                 txtNombreConsultarCancion.setText(cancion.getNombreCancion());
-                textFechaLanzamineto.setDate(cancion.getFechaLanzamiento());
+                textFechaLanzamineto.setDate(mFecha);
                 txtDuracionConsultaUnaCancionEntrada.setText(String.valueOf(cancion.getDuracion()));
                 
             }
