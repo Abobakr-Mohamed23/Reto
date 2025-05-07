@@ -17,6 +17,15 @@ public class Cancion {
         this.idArtista = idArtista;
        
     }
+    
+     public Cancion( String nombreCancion, String fechaLanzamiento, double duracion, int idArtista) {
+        
+        this.nombreCancion = nombreCancion;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.duracion = duracion;
+        this.idArtista = idArtista;
+       
+    }
 
     @Override
     public String toString() {
