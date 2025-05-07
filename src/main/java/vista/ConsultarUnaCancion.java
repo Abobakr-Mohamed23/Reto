@@ -12,7 +12,7 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
         initComponents();
         //variables
         txtNombreConsultarCancion.setEnabled(false);
-        jDateCancion.setEnabled(false);
+        textFechaLanzamineto.setEnabled(false);
         txtDuracionConsultaUnaCancionEntrada.setEnabled(false);
         
     }
@@ -30,7 +30,7 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
         tituloDuracionConsultarUnaCancion = new javax.swing.JLabel();
         txtDuracionConsultaUnaCancionEntrada = new javax.swing.JTextField();
         tituloFechaLanzamientoConsultarUnaCancion = new javax.swing.JLabel();
-        jDateCancion = new com.toedter.calendar.JDateChooser();
+        textFechaLanzamineto = new com.toedter.calendar.JDateChooser();
         botonBuscarConsultarUnaCancion = new javax.swing.JButton();
         lblErrorConsultarUnaCancion = new javax.swing.JLabel();
 
@@ -79,18 +79,15 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
                     .addComponent(tituloNombreConsultarUnaCancion)
                     .addComponent(tituloDuracionConsultarUnaCancion)
                     .addComponent(tituloFechaLanzamientoConsultarUnaCancion))
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateCancion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtDuracionConsultaUnaCancionEntrada)
-                            .addComponent(txtNombreConsultarCancion)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtCodigoConsultarUnaCancionEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodigoConsultarUnaCancionEntrada)
                         .addGap(18, 18, 18)
-                        .addComponent(botonBuscarConsultarUnaCancion)))
+                        .addComponent(botonBuscarConsultarUnaCancion))
+                    .addComponent(textFechaLanzamineto, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(txtDuracionConsultaUnaCancionEntrada)
+                    .addComponent(txtNombreConsultarCancion))
                 .addGap(53, 53, 53))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -107,17 +104,17 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tituloCodigoConsultarUnaCancion)
-                    .addComponent(txtCodigoConsultarUnaCancionEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonBuscarConsultarUnaCancion))
+                    .addComponent(botonBuscarConsultarUnaCancion)
+                    .addComponent(txtCodigoConsultarUnaCancionEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tituloNombreConsultarUnaCancion)
                     .addComponent(txtNombreConsultarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFechaLanzamineto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tituloFechaLanzamientoConsultarUnaCancion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tituloDuracionConsultarUnaCancion, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtDuracionConsultaUnaCancionEntrada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,18 +128,19 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
         try {
             lblErrorConsultarUnaCancion.setText("");
             txtNombreConsultarCancion.setText("");
-            jDateCancion.setDate(null);
+            textFechaLanzamineto.setDate(null);
             txtDuracionConsultaUnaCancionEntrada.setText("");
             
             
             int codigo = Integer.parseInt(txtCodigoConsultarUnaCancionEntrada.getText());
             Cancion cancion = AccesoCancion.consultar(codigo);
+            
             if (cancion == null) {
                 lblErrorConsultarUnaCancion.setText("No existe ninguna canción con ese código.");
             } else {
                 txtNombreConsultarCancion.setText(cancion.getNombreCancion());
-                jDateCancion.setDate(cancion.getFechaLanzamiento());
-                txtDuracionConsultaUnaCancionEntrada.setText(cancion.getDuracion());
+                textFechaLanzamineto.setDate(cancion.getFechaLanzamiento());
+                txtDuracionConsultaUnaCancionEntrada.setText(String.valueOf(cancion.getDuracion()));
                 
             }
         } catch (NumberFormatException nfe) {
@@ -158,9 +156,9 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarConsultarUnaCancion;
-    private com.toedter.calendar.JDateChooser jDateCancion;
     private javax.swing.JLabel lblErrorConsultarUnaCancion;
     private javax.swing.JLabel lblTituloListaConsultarTodasCanciones;
+    private com.toedter.calendar.JDateChooser textFechaLanzamineto;
     private javax.swing.JLabel tituloCodigoConsultarUnaCancion;
     private javax.swing.JLabel tituloDuracionConsultarUnaCancion;
     private javax.swing.JLabel tituloFechaLanzamientoConsultarUnaCancion;
