@@ -17,7 +17,7 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Pais origen");
         modelo.addColumn("Fecha nacimiento");
-        modelo.addColumn("Código compañía");
+        modelo.addColumn("compañía");
         tbArtistas.setModel(modelo);
         Object[] fila;
         try {
@@ -28,7 +28,7 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
                 fila[1] = artista.getNombreCompleto();
                 fila[2] = artista.getPaisOrigen();
                 fila[3] = artista.getFechaNacimiento();
-                fila[4] = compania.getIdCompania();
+                fila[4] = compania.getNombreCompania();
 
                 modelo.addRow(fila);
             }

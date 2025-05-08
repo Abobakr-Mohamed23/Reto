@@ -348,6 +348,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultaCompania formularioConsultaUno = null;
     ConsultaTodosCompanias formularioConsultaTodos = null;
     EliminarCompania eliminarCompania = null;
+    EliminarArtista eliminarArtista = null;
     InsertarCompania insertarCompania = null;
     ActualizarCompania actualizarCompania = null;
 
