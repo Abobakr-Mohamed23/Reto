@@ -52,6 +52,7 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setFocusCycleRoot(false);
+        setVisible(true);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -62,20 +62,28 @@
             <Property name="text" type="java.lang.String" value="Artista"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="ArtistaConsultarTodos">
+            <MenuItem class="javax.swing.JMenuItem" name="artistaConsultarTodos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar todos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ArtistaConsultarTodosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaConsultarTodosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="ArtistaConsultarUno">
+            <MenuItem class="javax.swing.JMenuItem" name="artistaConsultarUno">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar uno"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ArtistaConsultarUnoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaConsultarUnoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="artistaEliminar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar Artista"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaEliminarActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

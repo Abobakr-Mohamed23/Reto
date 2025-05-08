@@ -28,8 +28,9 @@ public class Principal extends javax.swing.JFrame {
         menuInsertarCompania = new javax.swing.JMenuItem();
         menuActualizarCompa = new javax.swing.JMenuItem();
         Artista = new javax.swing.JMenu();
-        ArtistaConsultarTodos = new javax.swing.JMenuItem();
-        ArtistaConsultarUno = new javax.swing.JMenuItem();
+        artistaConsultarTodos = new javax.swing.JMenuItem();
+        artistaConsultarUno = new javax.swing.JMenuItem();
+        artistaEliminar = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -82,21 +83,29 @@ public class Principal extends javax.swing.JFrame {
 
         Artista.setText("Artista");
 
-        ArtistaConsultarTodos.setText("Consultar todos");
-        ArtistaConsultarTodos.addActionListener(new java.awt.event.ActionListener() {
+        artistaConsultarTodos.setText("Consultar todos");
+        artistaConsultarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ArtistaConsultarTodosActionPerformed(evt);
+                artistaConsultarTodosActionPerformed(evt);
             }
         });
-        Artista.add(ArtistaConsultarTodos);
+        Artista.add(artistaConsultarTodos);
 
-        ArtistaConsultarUno.setText("Consultar uno");
-        ArtistaConsultarUno.addActionListener(new java.awt.event.ActionListener() {
+        artistaConsultarUno.setText("Consultar uno");
+        artistaConsultarUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ArtistaConsultarUnoActionPerformed(evt);
+                artistaConsultarUnoActionPerformed(evt);
             }
         });
-        Artista.add(ArtistaConsultarUno);
+        Artista.add(artistaConsultarUno);
+
+        artistaEliminar.setText("Eliminar Artista");
+        artistaEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artistaEliminarActionPerformed(evt);
+            }
+        });
+        Artista.add(artistaEliminar);
 
         menuBar.add(Artista);
 
@@ -161,21 +170,31 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuActualizarCompaActionPerformed
 
-    private void ArtistaConsultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistaConsultarTodosActionPerformed
+    private void artistaConsultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaConsultarTodosActionPerformed
       if (formularioConsultaTodosArtistas == null || formularioConsultaTodosArtistas.isClosed()) {
             formularioConsultaTodosArtistas = new ConsultarTodosArtistas() ;
             escritorio.add(formularioConsultaTodosArtistas);
             formularioConsultaTodosArtistas.setVisible(true);
         }
-    }//GEN-LAST:event_ArtistaConsultarTodosActionPerformed
+    }//GEN-LAST:event_artistaConsultarTodosActionPerformed
 
-    private void ArtistaConsultarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistaConsultarUnoActionPerformed
+    private void artistaConsultarUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaConsultarUnoActionPerformed
         if (formularioConsultaUnaArtista == null || formularioConsultaUnaArtista.isClosed()) {
             formularioConsultaUnaArtista = new ConsultaArtista() ;
             escritorio.add(formularioConsultaUnaArtista);
             formularioConsultaUnaArtista.setVisible(true);
+            formularioConsultaUnaArtista.setSize(500,400);
         }
-    }//GEN-LAST:event_ArtistaConsultarUnoActionPerformed
+    }//GEN-LAST:event_artistaConsultarUnoActionPerformed
+
+    private void artistaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaEliminarActionPerformed
+     if (eliminarArtista == null || eliminarArtista.isClosed()) {
+            eliminarArtista = new EliminarArtista() ;
+            escritorio.add(eliminarArtista);
+            eliminarArtista.setVisible(true);
+            eliminarArtista.setSize(400,400);
+        }
+    }//GEN-LAST:event_artistaEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,8 +234,9 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Artista;
-    private javax.swing.JMenuItem ArtistaConsultarTodos;
-    private javax.swing.JMenuItem ArtistaConsultarUno;
+    private javax.swing.JMenuItem artistaConsultarTodos;
+    private javax.swing.JMenuItem artistaConsultarUno;
+    private javax.swing.JMenuItem artistaEliminar;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuActualizarCompa;
@@ -229,10 +249,12 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ConsultaCompania fomularioConsultaUno = null;
+    ConsultaArtista formularioConsultaUnaArtista = null;
     ConsultaTodosCompanias formularioConsultaTodosCompanias = null;
     ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
-    ConsultaArtista formularioConsultaUnaArtista = null;
     EliminarCompania eliminarCompania = null;
+    EliminarArtista eliminarArtista = null;
     InsertarCompania insertarCompania = null;
     ActualizarCompania actualizarCompania = null;
+    
 }
