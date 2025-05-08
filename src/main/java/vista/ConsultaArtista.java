@@ -4,14 +4,18 @@ import acceso.AccesoArtista;
 import java.sql.SQLException;
 import modelo.Artista;
 
+/**
+ *
+ * @author Usuario
+ */
 public class ConsultaArtista extends javax.swing.JInternalFrame {
 
     public ConsultaArtista() {
         initComponents();
         txtNombre.setEnabled(false);
         txtPais.setEnabled(false);
-        jDateArtista.setEnabled(false);
-        txtCodigoCompania.setEnabled(false);
+        jDateFecha.setEnabled(false);
+        txtCompania.setEnabled(false);
     }
 
    
@@ -25,19 +29,18 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
         lblPais = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         lblCodigoCompania = new javax.swing.JLabel();
-        jDateArtista = new com.toedter.calendar.JDateChooser();
+        jDateFecha = new com.toedter.calendar.JDateChooser();
         txtCodigo = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtPais = new javax.swing.JTextField();
-        txtCodigoCompania = new javax.swing.JTextField();
+        txtCompania = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         lblError = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setResizable(true);
-        setTitle("Consultar artista");
+        setFocusCycleRoot(false);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -52,6 +55,17 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
         lblFecha.setText("Fecha Nacimiento");
 
         lblCodigoCompania.setText("Codigo compañia");
+
+        txtNombre.setEditable(false);
+
+        txtPais.setEditable(false);
+        txtPais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPaisActionPerformed(evt);
+            }
+        });
+
+        txtCompania.setEditable(false);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,31 +84,37 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCodigoCompania)
-                        .addGap(23, 23, 23)
-                        .addComponent(txtCodigoCompania))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblFecha)
+                        .addGap(7, 7, 7)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblNombre)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblCodigoCompania)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtCompania))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblCodigo)
-                                .addComponent(lblPais)
-                                .addComponent(lblNombre))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                                .addComponent(txtNombre)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCodigo)
+                                        .addComponent(lblPais))
+                                    .addGap(74, 74, 74))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jDateArtista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                    .addComponent(lblFecha)
+                                    .addGap(18, 18, 18)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnBuscar))
+                                .addComponent(jDateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPais)))))
+                .addContainerGap(41, Short.MAX_VALUE))
             .addComponent(lblError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -102,14 +122,14 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,39 +137,41 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPais)
                     .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFecha))
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFecha)
+                    .addComponent(jDateFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigoCompania)
-                    .addComponent(txtCodigoCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(txtCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPaisActionPerformed
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-     try {
+        try {
             lblError.setText("");
             txtNombre.setText("");
             txtPais.setText("");
-            jDateArtista.setDate(null);
-            txtCodigoCompania.setText("");
+            jDateFecha.setDate(null);
+            txtCompania.setText("");
             int codigo = Integer.parseInt(txtCodigo.getText());
-            String IdCompania = "";
             Artista artista = AccesoArtista.consultar(codigo);
             if (artista == null) {
                 lblError.setText("No existe ninguna compañía con ese código.");
             } else {
                 txtNombre.setText(artista.getNombreCompleto());
                 txtPais.setText(artista.getPaisOrigen());
-                jDateArtista.setDate(artista.getFechaNacimiento());
-                IdCompania = IdCompania + artista.getCompania().getIdCompania();
-                txtCodigoCompania.setText(IdCompania);
+                jDateFecha.setDate(artista.getFechaNacimiento());
+                txtCompania.setText(artista.getCompania().getNombreCompania());
             }
         } catch (NumberFormatException nfe) {
-            lblError.setText("El código de la Artista debe ser un número entero.");
+            lblError.setText("El código de la compañía debe ser un número entero.");
         } catch (ClassNotFoundException cnfe) {
             cnfe.getStackTrace();
             lblError.setText("Error al conectar con la base de datos.");
@@ -161,7 +183,7 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private com.toedter.calendar.JDateChooser jDateArtista;
+    private com.toedter.calendar.JDateChooser jDateFecha;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigoCompania;
     private javax.swing.JLabel lblError;
@@ -170,7 +192,7 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPais;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtCodigoCompania;
+    private javax.swing.JTextField txtCompania;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPais;
     // End of variables declaration//GEN-END:variables
