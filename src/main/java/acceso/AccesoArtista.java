@@ -26,7 +26,7 @@ public class AccesoArtista {
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) "
-            + " VALUES('" + artista.getNombreCompleto() + "', '" + artista.getPaisOrigen() + "', '" + artista.getFechaNacimiento() + "', '" + artista.getIdCompania() + "')";
+            + " VALUES('" + artista.getNombreCompleto() + "', '" + artista.getPaisOrigen() + "', '" + artista.getFechaNacimiento() + "', '" + artista.getCompania().getIdCompania() + "')";
 
             Statement sentencia = conexion.createStatement();
             sentencia.executeUpdate(sentenciaInsertar);
@@ -101,7 +101,7 @@ public class AccesoArtista {
                     + " nombreCompleto = '" + artista.getNombreCompleto() + "', "
                     + " paisOrigen = '" + artista.getPaisOrigen() + "', "
                     + " fechaNacimiento = '" + artista.getFechaNacimiento() + "'"
-                    + " idCompania = '" + artista.getIdCompania() + "'"
+                    + " idCompania = '" + artista.getCompania().getIdCompania() + "'"
                     + " WHERE idArtista = " + artista.getIdArtista();
 
             Statement sentencia = conexion.createStatement();

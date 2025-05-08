@@ -8,6 +8,7 @@ import acceso.AccesoArtista;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import modelo.Artista;
+import modelo.Compania_Discografica;
 
 
 /**
@@ -36,12 +37,13 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
         Object[] fila;
         try {
             for (Artista artista : AccesoArtista.consultarTodos()) {
+                Compania_Discografica compania = artista.getCompania();
                 fila = new Object[5];
                 fila[0] = artista.getIdArtista();
                 fila[1] = artista.getNombreCompleto();
                 fila[2] = artista.getPaisOrigen();
                 fila[3] = artista.getFechaNacimiento();
-                fila[4] = artista.getIdCompania();
+                fila[4] = compania.getIdCompania();
 
                 modelo.addRow(fila);
             }

@@ -74,11 +74,11 @@ public class Artista {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Compania_Discografica getIdCompania() {
+    public Compania_Discografica getCompania() {
         return Compania;
     }
 
-    public void setIdCompania(Compania_Discografica idCompania) {
+    public void setCompania(Compania_Discografica idCompania) {
         this.Compania = idCompania;
     }
 }
