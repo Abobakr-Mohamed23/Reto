@@ -52,7 +52,7 @@ public class AccesoArtista {
                         resultados.getString("nombreCompleto"),
                         resultados.getString("paisOrigen"),
                         resultados.getDate("fechaNacimiento"),
-                        resultados.getInt("idCompania"));
+                        AccesoCompania.consultar(resultados.getInt("idCompania")));
 
                 listaCompania.add(artista);
             }
@@ -79,7 +79,7 @@ public class AccesoArtista {
                         resultados.getString("nombreCompleto"),
                         resultados.getString("paisOrigen"),
                         resultados.getDate("fechaNacimiento"),
-                        resultados.getInt("idCompania"));
+                        AccesoCompania.consultar(resultados.getInt("idCompania")));
 
             }
             resultados.close();

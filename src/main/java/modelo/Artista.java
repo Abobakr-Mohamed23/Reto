@@ -14,21 +14,21 @@ public class Artista {
     private String nombreCompleto;
     private String paisOrigen;
     private Date fechaNacimiento;
-    private int idCompania; // FK: Compañía a la que pertenece
+    private Compania_Discografica Compania; // FK: Compañía a la que pertenece
 
-    public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
+    public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, Compania_Discografica Compania) {
         this.idArtista = idArtista;
         this.nombreCompleto = nombreCompleto;
         this.paisOrigen = paisOrigen;
         this.fechaNacimiento = fechaNacimiento;
-        this.idCompania = idCompania;
+        this.Compania = Compania;
     }
     
-    public Artista( String nombreCompleto, String paisOrigen, Date fechaNacimiento, int idCompania) {
+    public Artista( String nombreCompleto, String paisOrigen, Date fechaNacimiento, Compania_Discografica Compania) {
         this.nombreCompleto = nombreCompleto;
         this.paisOrigen = paisOrigen;
         this.fechaNacimiento = fechaNacimiento;
-        this.idCompania = idCompania;
+        this.Compania = Compania;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Artista {
                 + ", nombreCompleto='" + nombreCompleto + '\''
                 + ", paisOrigen='" + paisOrigen + '\''
                 + ", fechaNacimiento='" + fechaNacimiento + '\''
-                + ", idCompania=" + idCompania
+                + ", idCompania=" + Compania
                 + '}';
     }
 
@@ -74,12 +74,12 @@ public class Artista {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public int getIdCompania() {
-        return idCompania;
+    public Compania_Discografica getIdCompania() {
+        return Compania;
     }
 
-    public void setIdCompania(int idCompania) {
-        this.idCompania = idCompania;
+    public void setIdCompania(Compania_Discografica idCompania) {
+        this.Compania = idCompania;
     }
 }
 
