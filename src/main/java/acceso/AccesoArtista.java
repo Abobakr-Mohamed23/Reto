@@ -78,7 +78,7 @@ public class AccesoArtista {
                         resultados.getString("nombreCompleto"),
                         resultados.getString("paisOrigen"),
                         resultados.getDate("fechaNacimiento"),
-                         AccesoCompania.consultar(resultados.getInt("idCompania")));
+                        AccesoCompania.consultar(resultados.getInt("idCompania")));
 
             }
             resultados.close();
