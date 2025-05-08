@@ -16,7 +16,6 @@ public class AccesoCompania {
         try {
             conexion = DerbyUtil.abrirConexion();
             String sentenciaInsertar = "INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) "
-
                     + " VALUES('" + compania.getNombreCompania() + "', '" + compania.getUbicacion() + "', '" + compania.getAnioFundacion() + "')";
 
             Statement sentencia = conexion.createStatement();
@@ -41,7 +40,6 @@ public class AccesoCompania {
                 compania = new Compania_Discografica(resultados.getInt("idCompania"),
                         resultados.getString("nombreCompania"),
                         resultados.getString("ubicacion"),
-
                         resultados.getDate("anioFundacion"));
 
                 listaCompania.add(compania);
@@ -67,7 +65,6 @@ public class AccesoCompania {
                 compania = new Compania_Discografica(resultados.getInt("idCompania"),
                         resultados.getString("nombreCompania"),
                         resultados.getString("ubicacion"),
-
                         resultados.getDate("anioFundacion"));
 
             }
@@ -82,7 +79,7 @@ public class AccesoCompania {
     public static boolean modificar(Compania_Discografica compania)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-       
+
         try {
             conexion = DerbyUtil.abrirConexion();
 
@@ -94,7 +91,7 @@ public class AccesoCompania {
 
             Statement sentencia = conexion.createStatement();
             if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
-               return true;
+                return true;
             }
             sentencia.close();
         } finally {
@@ -106,8 +103,6 @@ public class AccesoCompania {
     public static boolean eliminar(int codigo)
             throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-
-
 
         try {
             conexion = DerbyUtil.abrirConexion();

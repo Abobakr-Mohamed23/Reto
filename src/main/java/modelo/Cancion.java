@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.sql.SQLException;
 
 public class Cancion {
 
@@ -8,25 +9,34 @@ public class Cancion {
     private String nombreCancion;
     private Date fechaLanzamiento;
     private double duracion;
-    private Artista idArtista;   
-    
+    private Artista artista;
 
-    public Cancion(int idCancion, String nombreCancion, Date fechaLanzamiento, double duracion, Artista idArtista) {
+    public Cancion(int idCancion, String nombreCancion, Date fechaLanzamiento, double duracion, Artista artista) {
         this.idCancion = idCancion;
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
         this.duracion = duracion;
-        this.idArtista = idArtista;
-       
+        this.artista = artista;
+
     }
-    
-     public Cancion( String nombreCancion, Date fechaLanzamiento, double duracion, Artista idArtista) {
-        
+
+    public Cancion(String nombreCancion, Date fechaLanzamiento, double duracion, Artista artista) {
+
         this.nombreCancion = nombreCancion;
         this.fechaLanzamiento = fechaLanzamiento;
         this.duracion = duracion;
-        this.idArtista = idArtista;
-       
+        this.artista = artista;
+
+    }
+
+    public Cancion(String nombreCancion, Date fechaLanzamiento, double duracion, int artista) throws ClassNotFoundException, SQLException {
+
+        Artista artistAux = acceso.AccesoArtista.consultar(artista);
+        this.nombreCancion = nombreCancion;
+        this.fechaLanzamiento = fechaLanzamiento;
+        this.duracion = duracion;
+        this.artista = artistAux;
+
     }
 
     @Override
@@ -36,7 +46,7 @@ public class Cancion {
                 + ", nombreCancion='" + nombreCancion + '\''
                 + ", fechaLanzamiento='" + fechaLanzamiento + '\''
                 + ", duracion=" + duracion
-                + ", idArtista=" + idArtista               
+                + ", idArtista=" + artista
                 + '}';
     }
 
@@ -72,11 +82,11 @@ public class Cancion {
         this.duracion = duracion;
     }
 
-    public Artista getIdArtista() {
-        return idArtista;
+    public Artista getArtista() {
+        return artista;
     }
 
-    public void setIdArtista(Artista idArtista) {
-        this.idArtista = idArtista;
+    public void setIdArtista(Artista artista) {
+        this.artista = artista;
     }
 }

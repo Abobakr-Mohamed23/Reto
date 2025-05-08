@@ -117,6 +117,11 @@ public class Principal extends javax.swing.JFrame {
         consultarCancionUno.add(menuInsertarCancion);
 
         actualizarCancion.setText("Actualizar Canción");
+        actualizarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarCancionActionPerformed(evt);
+            }
+        });
         consultarCancionUno.add(actualizarCancion);
 
         menuBar.add(consultarCancionUno);
@@ -230,7 +235,11 @@ public class Principal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_menuInsertarCancionActionPerformed
-  
+
+    private void actualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarCancionActionPerformed
+       
+    }//GEN-LAST:event_actualizarCancionActionPerformed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -299,13 +308,14 @@ public class Principal extends javax.swing.JFrame {
     EliminarCancion eliminarCancion = null;
     InsertarCancion insertarCancion = null;
   
+  
   /**
      * *********************Artista****************************
      */
 
     ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
     ConsultaArtista fomularioConsultaUnaArtista = null;
-   
+     ActualizarCancion formularioActualizarCancion = null;
 
     /**
      * **********VARIABLES***********************

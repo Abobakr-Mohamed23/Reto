@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package acceso;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,10 +10,6 @@ import java.util.List;
 import modelo.Artista;
 import modelo.Cancion;
 
-/**
- *
- * @author DAM1A13
- */
 public class AccesoCancion {
 
     public static List<Cancion> consultarTodos() throws ClassNotFoundException, SQLException {
@@ -57,10 +50,9 @@ public class AccesoCancion {
             ResultSet resultados = sentencia.executeQuery(sentenciaConsultar);
             if (resultados.next()) {
 
-           
                 cancion = new Cancion(resultados.getInt("idCancion"),
                         resultados.getString("nombreCancion"),
-                          resultados.getDate("fechaLanzamiento"),
+                        resultados.getDate("fechaLanzamiento"),
                         resultados.getDouble("duracion"),
                         AccesoArtista.consultar(resultados.getInt("idArtista")));
 
@@ -75,19 +67,18 @@ public class AccesoCancion {
 
     public static void insertar(Cancion cancion) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-
+        Artista artista = AccesoArtista.consultar(cancion.getArtista().getIdArtista());
+        int idArtista = artista.getIdArtista();
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaInsertar = "INSERT INTO cancion (nombreCancion, "
-                    + "fechaLanzamiento, duracion, idArtista) "
-                    + " VALUES('" + cancion.getNombreCancion() + "', '"
-                    + cancion.getFechaLanzamiento() + "', '"
-                    + cancion.getDuracion()
-                    + +cancion.getIdArtista().getIdArtista() + "')";
-
-            Statement sentencia = conexion.createStatement();
-            sentencia.executeUpdate(sentenciaInsertar);
-            sentencia.close();
+            String sentenciaInsertar = "INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = conexion.prepareStatement(sentenciaInsertar);
+            ps.setString(1, cancion.getNombreCancion());
+            ps.setDate(2, new java.sql.Date(cancion.getFechaLanzamiento().getTime()));
+            ps.setDouble(3, cancion.getDuracion());
+            ps.setInt(4, idArtista);
+            ps.executeUpdate();
+            ps.close();
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
@@ -103,7 +94,7 @@ public class AccesoCancion {
                     + " nombreCancion = '" + cancion.getNombreCancion() + "', "
                     + " fechaLanzamiento = '" + cancion.getFechaLanzamiento() + "', "
                     + " duracion = '" + cancion.getDuracion() + "'"
-                    + " idArtista = '" + cancion.getIdArtista() + "'"
+                    + " idArtista = '" + cancion.getArtista().getIdArtista() + "'"
                     + " WHERE idCancion = " + cancion.getIdCancion();
 
             Statement sentencia = conexion.createStatement();
