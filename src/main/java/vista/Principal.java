@@ -350,6 +350,7 @@ public class Principal extends javax.swing.JFrame {
     EliminarCompania eliminarCompania = null;
     EliminarArtista eliminarArtista = null;
     InsertarCompania insertarCompania = null;
+    InsertarArtista insertarArtista = null;
     ActualizarCompania actualizarCompania = null;
 
     /**
