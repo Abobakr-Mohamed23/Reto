@@ -32,13 +32,17 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
         jLabel1 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         lblConfirmacion = new javax.swing.JLabel();
         lblError = new javax.swing.JLabel();
+
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Eliminar compañía");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Eliminar Compañía");
@@ -52,12 +56,10 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Código de la compañía");
 
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
@@ -96,7 +98,6 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblError)
                 .addContainerGap(88, Short.MAX_VALUE))
-
         );
 
         pack();
@@ -133,6 +134,5 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblConfirmacion;
     private javax.swing.JLabel lblError;
     private javax.swing.JTextField txtCodigo;
-
     // End of variables declaration//GEN-END:variables
 }

@@ -86,26 +86,27 @@ public class AccesoCancion {
 
     public static boolean modificar(Cancion cancion) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
+        Artista artista = AccesoArtista.consultar(cancion.getArtista().getIdArtista());
+        int idArtista = artista.getIdArtista();
 
         try {
             conexion = DerbyUtil.abrirConexion();
+            String sentenciaActualizar = "UPDATE cancion SET nombreCancion = ?, fechaLanzamiento = ?, duracion = ?, idArtista = ? WHERE idCancion = ?";
+            PreparedStatement ps = conexion.prepareStatement(sentenciaActualizar);
+            ps.setString(1, cancion.getNombreCancion());
+            ps.setDate(2, new java.sql.Date(cancion.getFechaLanzamiento().getTime()));
+            ps.setDouble(3, cancion.getDuracion());
+            ps.setInt(4, idArtista);
+            ps.setInt(5, cancion.getIdCancion());
 
-            String sentenciaActualizar = "UPDATE cancion SET "
-                    + " nombreCancion = '" + cancion.getNombreCancion() + "', "
-                    + " fechaLanzamiento = '" + cancion.getFechaLanzamiento() + "', "
-                    + " duracion = '" + cancion.getDuracion() + "'"
-                    + " idArtista = '" + cancion.getArtista().getIdArtista() + "'"
-                    + " WHERE idCancion = " + cancion.getIdCancion();
+            int filasAfectadas = ps.executeUpdate();
+            ps.close();
 
-            Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
-                return true;
-            }
-            sentencia.close();
+            return filasAfectadas == 1;
+
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-        return false;
     }
 
     public static boolean eliminar(int codigo) throws ClassNotFoundException, SQLException {

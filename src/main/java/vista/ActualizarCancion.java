@@ -4,17 +4,19 @@
  */
 package vista;
 
-/**
- *
- * @author DAM1A13
- */
-public class ActualizarCancion extends javax.swing.JInternalFrame {
+import acceso.AccesoArtista;
+import acceso.AccesoCancion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Artista;
+import modelo.Cancion;
 
-    /**
-     * Creates new form ActualizarCancion
-     */
+public class ActualizarCancion extends javax.swing.JInternalFrame {
+    
     public ActualizarCancion() {
         initComponents();
+        
     }
 
     /**
@@ -29,6 +31,26 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
         lblTitulo = new javax.swing.JLabel();
         lblCodigo = new javax.swing.JLabel();
         lblCodigo1 = new javax.swing.JLabel();
+        lblCodigo2 = new javax.swing.JLabel();
+        lblCodigo3 = new javax.swing.JLabel();
+        lblCodigo4 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        txtCodigoBuscar = new javax.swing.JTextField();
+        txtNombreCancion = new javax.swing.JTextField();
+        txtDuracionCancion = new javax.swing.JTextField();
+        jDateFechaLanzamiento = new com.toedter.calendar.JDateChooser();
+        comboBoxArtistaCancion = new javax.swing.JComboBox();
+        btnLimpiar = new javax.swing.JButton();
+        btnActualizarCancion = new javax.swing.JButton();
+        lblConfirmación = new javax.swing.JLabel();
+        lblValido = new javax.swing.JLabel();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Actualizar Canción");
+        setToolTipText("");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -36,42 +58,248 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
 
         lblCodigo.setText("Código");
 
-        lblCodigo1.setText("Código");
+        lblCodigo1.setText("Nombre canción");
+
+        lblCodigo2.setText("Fecha de lanzamiento");
+
+        lblCodigo3.setText("Duración");
+
+        lblCodigo4.setText("Artista");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar Campos");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnActualizarCancion.setText("Actualizar Canción");
+        btnActualizarCancion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarCancionActionPerformed(evt);
+            }
+        });
+
+        lblConfirmación.setForeground(new java.awt.Color(255, 0, 51));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo1)
-                    .addComponent(lblCodigo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnLimpiar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblCodigo)
+                                .addComponent(lblCodigo4)
+                                .addComponent(lblCodigo3)
+                                .addComponent(lblCodigo2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblConfirmación)
+                                    .addComponent(lblCodigo1))))
+                        .addGap(118, 118, 118)
+                        .addComponent(btnActualizarCancion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtDuracionCancion)
+                                .addComponent(jDateFechaLanzamiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                                .addComponent(txtNombreCancion, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(comboBoxArtistaCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(107, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblValido)
+                .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(29, 29, 29)
                 .addComponent(lblTitulo)
-                .addGap(39, 39, 39)
-                .addComponent(lblCodigo)
-                .addGap(41, 41, 41)
-                .addComponent(lblCodigo1)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblConfirmación)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblValido)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo)
+                    .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo1)
+                    .addComponent(txtNombreCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCodigo2)
+                    .addComponent(jDateFechaLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo3)
+                    .addComponent(txtDuracionCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCodigo4)
+                    .addComponent(comboBoxArtistaCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnActualizarCancion))
+                .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+        try {
+            
+            int codigo = Integer.parseInt(txtCodigoBuscar.getText());
+            Cancion cancion = AccesoCancion.consultar(codigo);
+            
+            if (cancion == null) {
+                lblConfirmación.setText("No existe ninguna canción con ese código.");
+            } else {
+                txtNombreCancion.setText(cancion.getNombreCancion());
+                txtDuracionCancion.setText(Double.toString(cancion.getDuracion()));
+                jDateFechaLanzamiento.setDate(cancion.getFechaLanzamiento());
+                
+                cargarArtistasActualizar();
+                Artista artistaCancion = cancion.getArtista();
+                for (int i = 0; i < comboBoxArtistaCancion.getItemCount(); i++) {
+                    Artista artista = (Artista) comboBoxArtistaCancion.getItemAt(i);
+                    if (artista.getIdArtista() == artistaCancion.getIdArtista()) {
+                        comboBoxArtistaCancion.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                
+                txtCodigoBuscar.setEnabled(false);
+                txtNombreCancion.setEnabled(true);
+                txtDuracionCancion.setEnabled(true);
+                comboBoxArtistaCancion.setEditable(false);
+                jDateFechaLanzamiento.setEnabled(true);
+            }
+        } catch (NumberFormatException nfe) {
+            lblConfirmación.setText("El código de la canción debe ser un número entero.");
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.getStackTrace();
+            lblConfirmación.setText("Error al conectar con la base de datos.");
+        } catch (SQLException sqle) {
+            lblConfirmación.setText("Error en la base de datos.");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtCodigoBuscar.setEnabled(true);
+        txtNombreCancion.setEnabled(false);
+        txtDuracionCancion.setEnabled(false);
+        jDateFechaLanzamiento.setEnabled(false);
+        comboBoxArtistaCancion.setEnabled(false);
+        txtCodigoBuscar.setText("");
+        txtNombreCancion.setText("");
+        txtDuracionCancion.setText("");
+        jDateFechaLanzamiento.setDate(null);
+        comboBoxArtistaCancion.removeAllItems();
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCancionActionPerformed
+        
+        try {
+            
+            java.util.Date mFecha = jDateFechaLanzamiento.getDate();
+            java.sql.Date anioFundacion = null;
+            
+            if (mFecha != null) {
+                anioFundacion = new java.sql.Date(mFecha.getTime());
+            }
+            
+            int codigo = Integer.parseInt(txtCodigoBuscar.getText());
+            String nombreCancion = txtNombreCancion.getText();
+            Double duracion = Double.parseDouble(txtDuracionCancion.getText());
+            Artista artistaSeleccionado = (Artista) comboBoxArtistaCancion.getSelectedItem();
+            
+            Cancion cancion = new Cancion(codigo, nombreCancion, anioFundacion, duracion, artistaSeleccionado);
+            
+            boolean valido = AccesoCancion.modificar(cancion);
+            
+            if (valido) {
+                lblValido.setText("Canción actualizada correctamente");
+                txtNombreCancion.setText("");
+                txtDuracionCancion.setText("");
+                jDateFechaLanzamiento.setDate(null);
+                comboBoxArtistaCancion.removeAllItems();
+                txtCodigoBuscar.setText("");
+                
+            } else {
+                lblConfirmación.setText("Error al actualizar.");
+            }
+        } catch (NumberFormatException nfe) {
+            lblConfirmación.setText("El código de la compañía debe ser un número entero.");
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.getStackTrace();
+            lblConfirmación.setText("Error al conectar con la base de datos.");
+        } catch (SQLException sqle) {
+            lblConfirmación.setText("Error en la base de datos.");
+        }
+        
+
+    }//GEN-LAST:event_btnActualizarCancionActionPerformed
+    
+    private void cargarArtistasActualizar() {
+        comboBoxArtistaCancion.removeAllItems();
+        try {
+            for (Artista artista : AccesoArtista.consultarTodos()) {
+                comboBoxArtistaCancion.addItem(artista);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void limpiar() {
+        lblConfirmación.setText("");
+        txtNombreCancion.setText("");
+        txtDuracionCancion.setText("");
+        comboBoxArtistaCancion.removeAllItems();
+        jDateFechaLanzamiento.setDate(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarCancion;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox comboBoxArtistaCancion;
+    private com.toedter.calendar.JDateChooser jDateFechaLanzamiento;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo1;
+    private javax.swing.JLabel lblCodigo2;
+    private javax.swing.JLabel lblCodigo3;
+    private javax.swing.JLabel lblCodigo4;
+    private javax.swing.JLabel lblConfirmación;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblValido;
+    private javax.swing.JTextField txtCodigoBuscar;
+    private javax.swing.JTextField txtDuracionCancion;
+    private javax.swing.JTextField txtNombreCancion;
     // End of variables declaration//GEN-END:variables
 }
