@@ -62,6 +62,14 @@
             <Property name="text" type="java.lang.String" value="Artista"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="artistaConsultarUno">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultar uno"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaConsultarUnoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="artistaConsultarTodos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar todos"/>
@@ -70,12 +78,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaConsultarTodosActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="artistaConsultarUno">
+            <MenuItem class="javax.swing.JMenuItem" name="InsertarArtista">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar uno"/>
+                <Property name="text" type="java.lang.String" value="Insertar Artista"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artistaConsultarUnoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsertarArtistaActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="artistaEliminar">

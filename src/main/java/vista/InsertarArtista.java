@@ -4,17 +4,26 @@
  */
 package vista;
 
+import acceso.AccesoArtista;
+import acceso.AccesoCompania;
+import java.sql.SQLException;
+import modelo.Artista;
+import modelo.Compania_Discografica;
+
 /**
  *
  * @author DAM1A03
  */
-public class InsertarArtista extends javax.swing.JFrame {
+public class InsertarArtista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InsertarArtista
      */
     public InsertarArtista() {
         initComponents();
+        lblError.setText("");
+        cargarDatosCompanias();
+        
     }
 
     /**
@@ -36,9 +45,14 @@ public class InsertarArtista extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtPais = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        lblError = new javax.swing.JLabel();
+        lblConfirmacion = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,42 +72,59 @@ public class InsertarArtista extends javax.swing.JFrame {
             }
         });
 
+        txtCodigoCompania.setEditable(false);
+
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        lblError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(204, 0, 0));
+        lblError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblConfirmacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblConfirmacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNombre)
+                    .addComponent(lblPais, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblcompania, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPais)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblNombre)
-                            .addComponent(lblPais, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblcompania, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBoxCompanias, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigoCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtPais)
-                            .addComponent(txtNombre)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(btnAgregar)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addComponent(jComboBoxCompanias, 0, 215, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCodigoCompania, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre))
+                .addGap(91, 91, 91))
+            .addComponent(lblConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(276, 276, 276)
+                .addComponent(btnAgregar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblTitulo)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblError, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -104,27 +135,96 @@ public class InsertarArtista extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblFecha)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblcompania)
                     .addComponent(jComboBoxCompanias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigoCompania, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(btnAgregar)
-                .addGap(30, 30, 30))
+                .addGap(29, 29, 29)
+                .addComponent(lblConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxCompaniasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCompaniasActionPerformed
-        // TODO add your handling code here:
+        Compania_Discografica companiaSeleccionado = (Compania_Discografica) jComboBoxCompanias.getSelectedItem();
+
+        if (companiaSeleccionado != null) {
+
+            int idCompania = companiaSeleccionado.getIdCompania();
+             
+            txtCodigoCompania.setText(companiaSeleccionado.getNombreCompania());
+            
+        }
     }//GEN-LAST:event_jComboBoxCompaniasActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        try {
+
+            java.util.Date mFecha = jDateFechaNacimiento.getDate();
+            java.sql.Date fechaNacimiento = null;
+            if (mFecha != null) {
+                fechaNacimiento = new java.sql.Date(mFecha.getTime());
+            }
+
+            String nombreArtista = txtNombre.getText();
+             String paisOrigen = txtPais.getText();
+            
+
+            Compania_Discografica compania = (Compania_Discografica) jComboBoxCompanias.getSelectedItem();
+
+            if (compania != null) {
+
+                Artista artista = new Artista(nombreArtista, paisOrigen, fechaNacimiento, compania);
+
+                AccesoArtista.insertar(artista);
+
+                lblConfirmacion.setText("Insertado correctamente");
+
+                txtNombre.setText("");
+                jDateFechaNacimiento.setDate(null);
+                txtPais.setText("");
+            }
+
+        } catch (NumberFormatException nfe) {
+            lblError.setText("El código de la canción debe ser un número entero.");
+            lblConfirmacion.setText("");
+        } catch (ClassNotFoundException cnfe) {
+            lblError.setText("Error al conectar con la base de datos.");
+            lblConfirmacion.setText("");
+        } catch (SQLException sqle) {
+            lblError.setText("Error en la base de datos.");
+            lblConfirmacion.setText("");
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
      */
+     
+    private void cargarDatosCompanias() {
+
+        try {
+            for (Compania_Discografica compania : AccesoCompania.consultarTodos()) {
+
+                jComboBoxCompanias.addItem(compania);
+                
+                
+
+            }
+
+        } catch (ClassNotFoundException ex) {
+
+        } catch (SQLException ex) {
+
+        }
+
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -159,8 +259,10 @@ public class InsertarArtista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JComboBox<String> jComboBoxCompanias;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox<Compania_Discografica> jComboBoxCompanias;
+    private com.toedter.calendar.JDateChooser jDateFechaNacimiento;
+    private javax.swing.JLabel lblConfirmacion;
+    private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPais;
