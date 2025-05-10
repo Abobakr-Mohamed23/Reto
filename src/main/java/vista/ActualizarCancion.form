@@ -6,6 +6,8 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
+    <Property name="title" type="java.lang.String" value="Actualizar Canci&#xf3;n"/>
+    <Property name="toolTipText" type="java.lang.String" value=""/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -25,57 +27,50 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblCodigoCancionvista" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNombreCancionVista" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblFechaLanzamientoVista" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblDuracionCancionVista" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelCancionArtistaVista" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblTitulo" min="-2" pref="319" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtCodigoCancionEntrada" max="32767" attributes="0"/>
-                          <Component id="jDateCancionActualizarEntrada" max="32767" attributes="0"/>
-                          <Component id="txtNombreCancionActualizarEntrada" pref="201" max="32767" attributes="0"/>
-                          <Component id="txtDuracionCancionActualizarEntrada" pref="201" max="32767" attributes="0"/>
-                          <Component id="comboBoxArtista" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="txtArtistaCancion1" min="-2" pref="175" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="btnBuscar" min="-2" pref="53" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                      <Component id="lblErrorActualizar" min="-2" pref="332" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCodigo4" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCodigo3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCodigo2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="lblConfirmación" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCodigo1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                      <Component id="btnActualizarCancion" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                      <Component id="btnLimpiarCamposActualizarCancion" min="-2" pref="119" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="btnActualizarCancionConfirmacion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblTitulo" min="-2" pref="319" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtCodigoBuscar" min="-2" pref="129" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="txtDuracionCancion" max="32767" attributes="0"/>
+                              <Component id="jDateFechaLanzamiento" alignment="0" pref="226" max="32767" attributes="0"/>
+                              <Component id="txtNombreCancion" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="comboBoxArtistaCancion" alignment="1" min="-2" pref="226" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="107" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="lblValido" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
@@ -87,45 +82,44 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="lblErrorActualizar" min="-2" pref="16" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblConfirmación" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblValido" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCodigoCancionvista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCodigoCancionEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodigoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblNombreCancionVista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNombreCancionActualizarEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNombreCancion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblFechaLanzamientoVista" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDateCancionActualizarEntrada" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDateFechaLanzamiento" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDuracionCancionVista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDuracionCancionActualizarEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="comboBoxArtista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelCancionArtistaVista" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtArtistaCancion1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="lblValidacionCancionActualizar" min="-2" pref="19" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnLimpiarCamposActualizarCancion" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnActualizarCancionConfirmacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDuracionCancion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblCodigo4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboBoxArtistaCancion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnActualizarCancion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,94 +146,74 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDuracionCancionVista">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Duracion"/>
+        <Property name="text" type="java.lang.String" value="Nombre canci&#xf3;n"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblFechaLanzamientoVista">
+    <Component class="javax.swing.JLabel" name="lblCodigo2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha de Lanzamiento"/>
+        <Property name="text" type="java.lang.String" value="Fecha de lanzamiento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCodigoCancionEntrada">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDuracionCancionActualizarEntrada">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateCancionActualizarEntrada">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnLimpiarCamposActualizarCancion">
+    <Component class="javax.swing.JLabel" name="lblCodigo3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Limpiar campos"/>
+        <Property name="text" type="java.lang.String" value="Duraci&#xf3;n"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarCamposActualizarCancionActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnActualizarCancionConfirmacion">
+    <Component class="javax.swing.JLabel" name="lblCodigo4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Actualizar Compa&#xf1;&#xed;a"/>
+        <Property name="text" type="java.lang.String" value="Artista"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarCancionConfirmacionActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-            <BevelBorder/>
-          </Border>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNombreCancionActualizarEntrada">
+    <Component class="javax.swing.JTextField" name="txtCodigoBuscar">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblErrorActualizar">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="3"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtNombreCancion">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblValidacionCancionActualizar">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="ff" red="33" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtDuracionCancion">
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboBoxArtista">
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateFechaLanzamiento">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboBoxArtistaCancion">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxArtistaActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelCancionArtistaVista">
+    <Component class="javax.swing.JButton" name="btnLimpiar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Artista"/>
+        <Property name="text" type="java.lang.String" value="Limpiar Campos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnActualizarCancion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Actualizar Canci&#xf3;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarCancionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblConfirmaci&#xf3;n">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="0" red="ff" type="rgb"/>
+        </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtArtistaCancion1">
+    <Component class="javax.swing.JLabel" name="lblValido">
     </Component>
   </SubComponents>
 </Form>

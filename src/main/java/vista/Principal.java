@@ -4,6 +4,7 @@ public class Principal extends javax.swing.JFrame {
 
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -24,7 +25,7 @@ public class Principal extends javax.swing.JFrame {
         menuConsultarTodasCanciones = new javax.swing.JMenuItem();
         eliminarCancionMenuItem = new javax.swing.JMenuItem();
         menuInsertarCancion = new javax.swing.JMenuItem();
-        actualizarCancion = new javax.swing.JMenuItem();
+        menuActualizarCancion = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -116,13 +117,13 @@ public class Principal extends javax.swing.JFrame {
         });
         consultarCancionUno.add(menuInsertarCancion);
 
-        actualizarCancion.setText("Actualizar Canción");
-        actualizarCancion.addActionListener(new java.awt.event.ActionListener() {
+        menuActualizarCancion.setText("Actualizar Canción");
+        menuActualizarCancion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarCancionActionPerformed(evt);
+                menuActualizarCancionActionPerformed(evt);
             }
         });
-        consultarCancionUno.add(actualizarCancion);
+        consultarCancionUno.add(menuActualizarCancion);
 
         menuBar.add(consultarCancionUno);
 
@@ -236,10 +237,14 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menuInsertarCancionActionPerformed
 
-    private void actualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarCancionActionPerformed
-       
-    }//GEN-LAST:event_actualizarCancionActionPerformed
-    
+    private void menuActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActualizarCancionActionPerformed
+         if (actualizarCancion == null || actualizarCancion.isClosed()) {
+            actualizarCancion = new ActualizarCancion();
+            escritorio.add(actualizarCancion);
+            actualizarCancion.setVisible(true);
+        }
+    }//GEN-LAST:event_menuActualizarCancionActionPerformed
+  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -274,12 +279,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem actualizarCancion;
     private javax.swing.JMenu consultarCancionUno;
     private javax.swing.JMenuItem consultarUnaCancion;
     private javax.swing.JMenuItem eliminarCancionMenuItem;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuActualizarCancion;
     private javax.swing.JMenuItem menuActualizarCompa;
     private javax.swing.JMenu menuActualizarCompania;
     private javax.swing.JMenuBar menuBar;
@@ -307,6 +312,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultarUnaCancion formularioConsultaUnaCancion = null;
     EliminarCancion eliminarCancion = null;
     InsertarCancion insertarCancion = null;
+    ActualizarCancion actualizarCancion = null;
   
   
   /**

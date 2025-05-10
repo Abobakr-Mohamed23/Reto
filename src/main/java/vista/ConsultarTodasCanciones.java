@@ -7,28 +7,27 @@ import javax.swing.table.DefaultTableModel;
 
 public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
 
-    
     public ConsultarTodasCanciones() {
         initComponents();
         lblErrorConsultarTodasCanciones.setText("");
-       
 
-    /** **DATOS PARA LA TABLA***** */
-    
+       
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Código");
-        modelo.addColumn("Nombre");
+        modelo.addColumn("Nombre canción");
         modelo.addColumn("Fecha Lanzamiento");
         modelo.addColumn("Duración");
+        modelo.addColumn("Artista");
         tablaConsultarTodasCanciones.setModel(modelo);
         Object[] fila;
         try {
             for (Cancion cancion : AccesoCancion.consultarTodos()) {
-                fila = new Object[4];
+                fila = new Object[5];
                 fila[0] = cancion.getIdCancion();
                 fila[1] = cancion.getNombreCancion();
                 fila[2] = cancion.getFechaLanzamiento();
                 fila[3] = cancion.getDuracion();
+                fila[4] = cancion.getArtista().getNombreCompleto();
 
                 modelo.addRow(fila);
 
@@ -40,7 +39,8 @@ public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
 
         }
     }
-        @SuppressWarnings("unchecked")
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -51,6 +51,10 @@ public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Lista de canciones");
 
         lblTituloListaConsultarTodasCanciones.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTituloListaConsultarTodasCanciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -103,8 +107,8 @@ public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTituloListaConsultarTodasCanciones;
     private javax.swing.JTable tablaConsultarTodasCanciones;
     // End of variables declaration//GEN-END:variables
-/**** preguntar****/
-   
+/**
+     * ** preguntar***
+     */
 
-   
 }

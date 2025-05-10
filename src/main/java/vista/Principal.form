@@ -104,12 +104,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuInsertarCancionActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="actualizarCancion">
+            <MenuItem class="javax.swing.JMenuItem" name="menuActualizarCancion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Actualizar Canci&#xf3;n"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actualizarCancionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuActualizarCancionActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

@@ -31,7 +31,10 @@ public class ConsultaCompania extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta de departamento");
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Consulta de compañía");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

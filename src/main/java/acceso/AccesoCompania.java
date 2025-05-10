@@ -1,6 +1,7 @@
 package acceso;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -100,27 +101,24 @@ public class AccesoCompania {
         return false;
     }
 
-    public static boolean eliminar(int codigo)
-            throws ClassNotFoundException, SQLException {
+    public static boolean eliminar(int codigo) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-
         try {
-            conexion = DerbyUtil.abrirConexion();
-            String sentenciaEliminar = "DELETE FROM compania "
-                    + " WHERE idCompania = " + codigo;
-            Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sentenciaEliminar) == 1) {
-
-                return true;
-
+            if (tieneArtistas(codigo)) {
+                return false; 
             }
-            sentencia.close();
+
+            conexion = DerbyUtil.abrirConexion();
+            String sentenciaEliminar = "DELETE FROM compania WHERE idCompania = ?";
+            PreparedStatement ps = conexion.prepareStatement(sentenciaEliminar);
+            ps.setInt(1, codigo);
+            int filas = ps.executeUpdate();
+            ps.close();
+
+            return filas == 1;
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-
-        return false;
-
     }
 
     public static int eliminarPorUbicacion(String ubicacion)
@@ -138,6 +136,25 @@ public class AccesoCompania {
             DerbyUtil.cerrarConexion(conexion);
         }
         return numEliminados;
+    }
+
+    public static boolean tieneArtistas(int idCompania) throws ClassNotFoundException, SQLException {
+        Connection conexion = null;
+        try {
+            conexion = DerbyUtil.abrirConexion();
+            String consulta = "SELECT COUNT(*) FROM artista WHERE idCompania = ?";
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ps.setInt(1, idCompania);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+            rs.close();
+            ps.close();
+        } finally {
+            DerbyUtil.cerrarConexion(conexion);
+        }
+        return false;
     }
 
 }
