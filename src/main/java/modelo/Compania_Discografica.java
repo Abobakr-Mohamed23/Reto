@@ -9,7 +9,6 @@ public class Compania_Discografica {
     private int idCompania;
     private String nombreCompania;
     private String ubicacion;
-
     private Date anioFundacion; 
 
     public Compania_Discografica(int idCompania, String nombreCompania, String ubicacion, Date anioFundacion) {
