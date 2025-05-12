@@ -2,34 +2,31 @@ package acceso;
 
 import acceso.DerbyUtil;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Artista;
+import modelo.Compania_Discografica;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/**
- *
- * @author DAM1A03
- */
 public class AccesoArtista {
 
-    public static void insertar(Artista artista)
-            throws ClassNotFoundException, SQLException {
+    public static void insertar(Artista artista) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
+        Compania_Discografica compania = AccesoCompania.consultar(artista.getCompania().getIdCompania());
+        int idCompania = compania.getIdCompania();
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) "
-                    + " VALUES('" + artista.getNombreCompleto() + "', '" + artista.getPaisOrigen() + "', '" + artista.getFechaNacimiento() + "', '" + artista.getIdCompania() + "')";
-
-            Statement sentencia = conexion.createStatement();
-            sentencia.executeUpdate(sentenciaInsertar);
-            sentencia.close();
+            String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, compania) VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = conexion.prepareStatement(sentenciaInsertar);
+            ps.setString(1, artista.getNombreCompleto());
+            ps.setString(2, artista.getPaisOrigen());
+            ps.setDate(3, new java.sql.Date(artista.getFechaNacimiento().getTime()));
+            ps.setInt(4, idCompania);
+            ps.executeUpdate();
+            ps.close();
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
@@ -42,7 +39,7 @@ public class AccesoArtista {
         List<Artista> listaCompania = new ArrayList<>();
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaConsultar = "SELECT * FROM Artista";
+            String sentenciaConsultar = "SELECT * FROM artista";
             Statement sentencia = conexion.createStatement();
             ResultSet resultados = sentencia.executeQuery(sentenciaConsultar);
             while (resultados.next()) {
@@ -89,29 +86,28 @@ public class AccesoArtista {
         return artista;
     }
 
-    public static boolean modificar(Artista artista)
-            throws ClassNotFoundException, SQLException {
+    public static boolean modificar(Artista artista) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
+        Compania_Discografica compania = AccesoCompania.consultar(artista.getCompania().getIdCompania());
+        int idCompania = compania.getIdCompania();
 
         try {
             conexion = DerbyUtil.abrirConexion();
+            String sentenciaActualizar = "UPDATE artista SET nombreCompleto = ?, paisOrigen = ?, fechaNacimiento = ?, idcompania = ? WHERE idArtista = ?";
+            PreparedStatement ps = conexion.prepareStatement(sentenciaActualizar);
+            ps.setString(1, artista.getNombreCompleto());
+            ps.setString(2, artista.getPaisOrigen());
+            ps.setDate(3, new java.sql.Date(artista.getFechaNacimiento().getTime()));
+            ps.setInt(4, idCompania);
 
-            String sentenciaActualizar = "UPDATE compania SET "
-                    + " nombreCompleto = '" + artista.getNombreCompleto() + "', "
-                    + " paisOrigen = '" + artista.getPaisOrigen() + "', "
-                    + " fechaNacimiento = '" + artista.getFechaNacimiento() + "'"
-                    + " idCompania = '" + artista.getIdCompania() + "'"
-                    + " WHERE idArtista = " + artista.getIdArtista();
+            int filasAfectadas = ps.executeUpdate();
+            ps.close();
 
-            Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sentenciaActualizar) == 1) {
-                return true;
-            }
-            sentencia.close();
+            return filasAfectadas == 1;
+
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-        return false;
     }
 
     public static boolean eliminar(int codigo)

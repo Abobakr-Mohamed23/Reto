@@ -1,8 +1,4 @@
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelo;
 
 import java.sql.Date;
@@ -13,26 +9,21 @@ public class Artista {
     private String nombreCompleto;
     private String paisOrigen;
     private Date fechaNacimiento;
-    private Compania_Discografica idCompania; // FK: Compañía a la que pertenece
+    private Compania_Discografica compania; 
 
-    public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, Compania_Discografica idCompania) {
+    public Artista(int idArtista, String nombreCompleto, String paisOrigen, Date fechaNacimiento, Compania_Discografica compania) {
         this.idArtista = idArtista;
         this.nombreCompleto = nombreCompleto;
         this.paisOrigen = paisOrigen;
         this.fechaNacimiento = fechaNacimiento;
-        this.idCompania = idCompania;
+        this.compania = compania;
     }
 
-    public Artista(String nombreCompleto, String paisOrigen, Date fechaNacimiento, Compania_Discografica idCompania) {
+    public Artista(String nombreCompleto, String paisOrigen, Date fechaNacimiento, Compania_Discografica compania) {
         this.nombreCompleto = nombreCompleto;
         this.paisOrigen = paisOrigen;
         this.fechaNacimiento = fechaNacimiento;
-        this.idCompania = idCompania;
-    }
-
-    @Override
-    public String toString() {
-        return this.getNombreCompleto(); // o como tengas definido el nombre
+        this.compania = compania;
     }
 
     public int getIdArtista() {
@@ -67,11 +58,15 @@ public class Artista {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Compania_Discografica getIdCompania() {
-        return idCompania;
+    public Compania_Discografica getCompania() {
+        return compania;
     }
 
-    public void setIdCompania(Compania_Discografica idCompania) {
-        this.idCompania = idCompania;
+    public void setCompania(Compania_Discografica compania) {
+        this.compania = compania;
     }
+
+  
+
+    
 }

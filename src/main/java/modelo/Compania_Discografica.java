@@ -19,22 +19,10 @@ public class Compania_Discografica {
         this.anioFundacion = anioFundacion;
     }
 
-
     public Compania_Discografica(String nombreCompania, String ubicacion, Date anioFundacion) {
         this.nombreCompania = nombreCompania;
         this.ubicacion = ubicacion;
         this.anioFundacion = anioFundacion;
-    }
-
-    @Override
-    public String toString() {
-        return "Compania_Discografica{"
-                + "idCompania=" + idCompania
-                + ", nombreCompania='" + nombreCompania + '\''
-                + ", ubicacion='" + ubicacion + '\''
-                + ", anioFundacion=" + anioFundacion
-
-                + '}';
     }
 
     public int getIdCompania() {

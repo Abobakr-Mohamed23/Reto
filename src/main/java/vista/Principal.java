@@ -26,6 +26,9 @@ public class Principal extends javax.swing.JFrame {
         eliminarCancionMenuItem = new javax.swing.JMenuItem();
         menuInsertarCancion = new javax.swing.JMenuItem();
         menuActualizarCancion = new javax.swing.JMenuItem();
+        menuArtista = new javax.swing.JMenu();
+        consultarTodos = new javax.swing.JMenuItem();
+        menuConsultarUnArtista = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -127,6 +130,26 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(consultarCancionUno);
 
+        menuArtista.setText("Artista");
+
+        consultarTodos.setText("Consultar todos");
+        consultarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarTodosActionPerformed(evt);
+            }
+        });
+        menuArtista.add(consultarTodos);
+
+        menuConsultarUnArtista.setText("Consulta un artista");
+        menuConsultarUnArtista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuConsultarUnArtistaActionPerformed(evt);
+            }
+        });
+        menuArtista.add(menuConsultarUnArtista);
+
+        menuBar.add(menuArtista);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -213,38 +236,58 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuConsultarTodasCancionesActionPerformed
 
     private void eliminarCancionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarCancionMenuItemActionPerformed
-         if (eliminarCancion == null || eliminarCancion.isClosed()) {
+        if (eliminarCancion == null || eliminarCancion.isClosed()) {
             eliminarCancion = new EliminarCancion();
             escritorio.add(eliminarCancion);
             eliminarCancion.setVisible(true);
         }
     }//GEN-LAST:event_eliminarCancionMenuItemActionPerformed
-/*************************Se quedo esto de la anterior clase que habia creado, no puedo elimnar preguntar a Cami  ******************/
-    
-    
+    /**
+     * ***********************Se quedo esto de la anterior clase que habia
+     * creado, no puedo elimnar preguntar a Cami  *****************
+     */
+
+
     private void consultarCancionUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarCancionUnoActionPerformed
 
 
     }//GEN-LAST:event_consultarCancionUnoActionPerformed
 
     private void menuInsertarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInsertarCancionActionPerformed
-       
-          if (insertarCancion == null || insertarCancion.isClosed()) {
+
+        if (insertarCancion == null || insertarCancion.isClosed()) {
             insertarCancion = new InsertarCancion();
             escritorio.add(insertarCancion);
             insertarCancion.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_menuInsertarCancionActionPerformed
 
     private void menuActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActualizarCancionActionPerformed
-         if (actualizarCancion == null || actualizarCancion.isClosed()) {
+        if (actualizarCancion == null || actualizarCancion.isClosed()) {
             actualizarCancion = new ActualizarCancion();
             escritorio.add(actualizarCancion);
             actualizarCancion.setVisible(true);
         }
     }//GEN-LAST:event_menuActualizarCancionActionPerformed
-  
+
+    private void consultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarTodosActionPerformed
+        if (formularioConsultaTodosArtistas == null || formularioConsultaTodosArtistas.isClosed()) {
+            formularioConsultaTodosArtistas = new ConsultarTodosArtistas();
+            escritorio.add(formularioConsultaTodosArtistas);
+            formularioConsultaTodosArtistas.setVisible(true);
+        }
+    }//GEN-LAST:event_consultarTodosActionPerformed
+
+    private void menuConsultarUnArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarUnArtistaActionPerformed
+
+        if (fomularioConsultaUnaArtista == null || fomularioConsultaUnaArtista.isClosed()) {
+            fomularioConsultaUnaArtista = new ConsultaArtista();
+            escritorio.add(fomularioConsultaUnaArtista);
+            fomularioConsultaUnaArtista.setVisible(true);
+        }
+    }//GEN-LAST:event_menuConsultarUnArtistaActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -280,6 +323,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu consultarCancionUno;
+    private javax.swing.JMenuItem consultarTodos;
     private javax.swing.JMenuItem consultarUnaCancion;
     private javax.swing.JMenuItem eliminarCancionMenuItem;
     private javax.swing.JDesktopPane escritorio;
@@ -287,9 +331,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuActualizarCancion;
     private javax.swing.JMenuItem menuActualizarCompa;
     private javax.swing.JMenu menuActualizarCompania;
+    private javax.swing.JMenu menuArtista;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuConsultarTodasCanciones;
     private javax.swing.JMenuItem menuConsultarTodos;
+    private javax.swing.JMenuItem menuConsultarUnArtista;
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenuItem menuEliminarCompania;
     private javax.swing.JMenuItem menuInsertarCancion;
@@ -313,17 +359,14 @@ public class Principal extends javax.swing.JFrame {
     EliminarCancion eliminarCancion = null;
     InsertarCancion insertarCancion = null;
     ActualizarCancion actualizarCancion = null;
-  
-  /**
+
+    /**
      * *********************Artista****************************
      */
-
     ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
     ConsultaArtista fomularioConsultaUnaArtista = null;
-   
 
     /**
      * **********VARIABLES***********************
      */
 }
-
