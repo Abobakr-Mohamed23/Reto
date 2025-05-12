@@ -25,6 +25,13 @@ public class Compania_Discografica {
         this.anioFundacion = anioFundacion;
     }
 
+    @Override
+    public String toString() {
+        return nombreCompania;
+    }
+    
+    
+
     public int getIdCompania() {
         return idCompania;
     }

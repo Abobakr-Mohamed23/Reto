@@ -29,6 +29,8 @@ public class Principal extends javax.swing.JFrame {
         menuArtista = new javax.swing.JMenu();
         consultarTodos = new javax.swing.JMenuItem();
         menuConsultarUnArtista = new javax.swing.JMenuItem();
+        InsertarArtista = new javax.swing.JMenuItem();
+        artistaEliminar = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -147,6 +149,23 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         menuArtista.add(menuConsultarUnArtista);
+
+        InsertarArtista.setText("Insertar Artista");
+        InsertarArtista.setToolTipText("");
+        InsertarArtista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertarArtistaActionPerformed(evt);
+            }
+        });
+        menuArtista.add(InsertarArtista);
+
+        artistaEliminar.setText("Eliminar Artista");
+        artistaEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                artistaEliminarActionPerformed(evt);
+            }
+        });
+        menuArtista.add(artistaEliminar);
 
         menuBar.add(menuArtista);
 
@@ -271,13 +290,21 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuActualizarCancionActionPerformed
 
-    private void consultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarTodosActionPerformed
-        if (formularioConsultaTodosArtistas == null || formularioConsultaTodosArtistas.isClosed()) {
-            formularioConsultaTodosArtistas = new ConsultarTodosArtistas();
-            escritorio.add(formularioConsultaTodosArtistas);
-            formularioConsultaTodosArtistas.setVisible(true);
+    private void artistaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaEliminarActionPerformed
+        if (eliminarArtista == null || eliminarArtista.isClosed()) {
+            eliminarArtista = new EliminarArtista();
+            escritorio.add(eliminarArtista);
+            eliminarArtista.setVisible(true);
         }
-    }//GEN-LAST:event_consultarTodosActionPerformed
+    }//GEN-LAST:event_artistaEliminarActionPerformed
+
+    private void InsertarArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarArtistaActionPerformed
+       if (insertarArtista == null || insertarArtista.isClosed()) {
+            insertarArtista = new InsertarArtista();
+            escritorio.add(insertarArtista);
+            insertarArtista.setVisible(true);
+        }
+    }//GEN-LAST:event_InsertarArtistaActionPerformed
 
     private void menuConsultarUnArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarUnArtistaActionPerformed
 
@@ -285,8 +312,17 @@ public class Principal extends javax.swing.JFrame {
             fomularioConsultaUnaArtista = new ConsultaArtista();
             escritorio.add(fomularioConsultaUnaArtista);
             fomularioConsultaUnaArtista.setVisible(true);
+            fomularioConsultaUnaArtista.setSize(415, 340);
         }
     }//GEN-LAST:event_menuConsultarUnArtistaActionPerformed
+
+    private void consultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarTodosActionPerformed
+        if (formularioConsultaTodosArtistas == null || formularioConsultaTodosArtistas.isClosed()) {
+            formularioConsultaTodosArtistas = new ConsultarTodosArtistas();
+            escritorio.add(formularioConsultaTodosArtistas);
+            formularioConsultaTodosArtistas.setVisible(true);
+        }
+    }//GEN-LAST:event_consultarTodosActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -322,6 +358,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem InsertarArtista;
+    private javax.swing.JMenuItem artistaEliminar;
     private javax.swing.JMenu consultarCancionUno;
     private javax.swing.JMenuItem consultarTodos;
     private javax.swing.JMenuItem consultarUnaCancion;
@@ -348,9 +386,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultaCompania formularioConsultaUno = null;
     ConsultaTodosCompanias formularioConsultaTodos = null;
     EliminarCompania eliminarCompania = null;
-    EliminarArtista eliminarArtista = null;
     InsertarCompania insertarCompania = null;
-    InsertarArtista insertarArtista = null;
     ActualizarCompania actualizarCompania = null;
 
     /**
@@ -367,6 +403,8 @@ public class Principal extends javax.swing.JFrame {
      */
     ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
     ConsultaArtista fomularioConsultaUnaArtista = null;
+    EliminarArtista eliminarArtista = null;
+    InsertarArtista insertarArtista = null;
 
     /**
      * **********VARIABLES***********************

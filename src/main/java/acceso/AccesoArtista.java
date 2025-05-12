@@ -19,7 +19,7 @@ public class AccesoArtista {
         int idCompania = compania.getIdCompania();
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, compania) VALUES (?, ?, ?, ?)";
+            String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, IDcompania) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = conexion.prepareStatement(sentenciaInsertar);
             ps.setString(1, artista.getNombreCompleto());
             ps.setString(2, artista.getPaisOrigen());
