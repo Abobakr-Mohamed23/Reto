@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 
 import acceso.AccesoArtista;
@@ -9,23 +6,11 @@ import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import modelo.Artista;
 
-
-/**
- *
- * @author DAM1A03
- */
 public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ConsultarTodosArtistas
-     */
     public ConsultarTodosArtistas() {
        initComponents();
         lblError.setText("");
-
-
-
-        //Se rellena la tabla con los datos
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Código");
         modelo.addColumn("Nombre");
@@ -41,7 +26,7 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
                 fila[1] = artista.getNombreCompleto();
                 fila[2] = artista.getPaisOrigen();
                 fila[3] = artista.getFechaNacimiento();
-                fila[4] = artista.getIdCompania();
+                fila[4] = artista.getCompania().getIdCompania();
 
                 modelo.addRow(fila);
             }
@@ -72,6 +57,7 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Consultar todos los artistas");
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
