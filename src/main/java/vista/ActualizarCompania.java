@@ -239,6 +239,7 @@ public class ActualizarCompania extends javax.swing.JInternalFrame {
         txtNombreActualizar.setEnabled(false);
         txtUbicacionActualizar.setEnabled(false);
         jDateCompania.setEnabled(false);
+        
         txtCodigo.setText("");
         txtNombreActualizar.setText("");
         txtUbicacionActualizar.setText("");

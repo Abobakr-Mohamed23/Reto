@@ -360,7 +360,9 @@ public class Principal extends javax.swing.JFrame {
     InsertarCancion insertarCancion = null;
     ActualizarCancion actualizarCancion = null;
 
+
     /**
+
      * *********************Artista****************************
      */
     ConsultarTodosArtistas formularioConsultaTodosArtistas = null;
