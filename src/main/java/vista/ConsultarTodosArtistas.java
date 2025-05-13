@@ -5,6 +5,7 @@ import acceso.AccesoArtista;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import modelo.Artista;
+import modelo.Compania_Discografica;
 
 public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
 
@@ -16,17 +17,18 @@ public class ConsultarTodosArtistas extends javax.swing.JInternalFrame {
         modelo.addColumn("Nombre");
         modelo.addColumn("Pais origen");
         modelo.addColumn("Fecha nacimiento");
-        modelo.addColumn("Código compañía");
+        modelo.addColumn("compañía");
         tbArtistas.setModel(modelo);
         Object[] fila;
         try {
             for (Artista artista : AccesoArtista.consultarTodos()) {
+                Compania_Discografica compania = artista.getCompania();
                 fila = new Object[5];
                 fila[0] = artista.getIdArtista();
                 fila[1] = artista.getNombreCompleto();
                 fila[2] = artista.getPaisOrigen();
                 fila[3] = artista.getFechaNacimiento();
-                fila[4] = artista.getCompania().getIdCompania();
+                fila[4] = compania.getNombreCompania();
 
                 modelo.addRow(fila);
             }

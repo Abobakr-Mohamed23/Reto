@@ -121,23 +121,6 @@ public class AccesoCompania {
         }
     }
 
-    public static int eliminarPorUbicacion(String ubicacion)
-            throws ClassNotFoundException, SQLException {
-        Connection conexion = null;
-        int numEliminados;
-        try {
-            conexion = DerbyUtil.abrirConexion();
-            String sentenciaEliminar = "DELETE FROM compania "
-                    + " WHERE ubicacion = '" + ubicacion + "'";
-            Statement sentencia = conexion.createStatement();
-            numEliminados = sentencia.executeUpdate(sentenciaEliminar);
-            sentencia.close();
-        } finally {
-            DerbyUtil.cerrarConexion(conexion);
-        }
-        return numEliminados;
-    }
-
     public static boolean tieneArtistas(int idCompania) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         try {

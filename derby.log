@@ -1,8 +1,8 @@
-Wed May 07 16:06:42 CEST 2025 : Servidor de red Apache Derby: Se ha iniciado 10.17.1.0 - (1913217) y está listo para aceptar las conexiones en el puerto 1527
+Tue May 13 16:59:08 CEST 2025 : Servidor de red Apache Derby: Se ha iniciado 10.17.1.0 - (1913217) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Wed May 07 16:06:42 CEST 2025:
- Iniciando instancia a816c00e-0196-ab11-f32a-00001ea69daf de Derby, versión The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): 
-en el directorio de base de datos E:\Mohamed magdy\NetBeansProjects\Reto-master\reto con el cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
+Tue May 13 16:59:21 CEST 2025:
+ Iniciando instancia a816c00e-0196-ca28-1b39-ffffbbd53320 de Derby, versión The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): 
+en el directorio de base de datos E:\Mohamed magdy\NetBeansProjects\Reto\reto con el cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
 Cargado desde file:/E:/Mohamed%20magdy/db-derby-10.17.1.0-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=21.0.6+8-LTS-188
@@ -10,22 +10,5 @@ user.dir=E:\Mohamed magdy\db-derby-10.17.1.0-bin
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
-derby.system.home=E:\Mohamed magdy\NetBeansProjects\Reto-master
-Cargador de clases de base de datos iniciado - derby.database.classpath=''
-----------------------------------------------------------------
-Wed May 07 16:06:49 CEST 2025:
-Cerrando la instancia a816c00e-0196-ab11-f32a-00001ea69daf en el directorio de base de datos E:\Mohamed magdy\NetBeansProjects\Reto-master\reto con cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
-Wed May 07 16:06:49 CEST 2025 Thread[#33,DRDAConnThread_3,5,main] (DATABASE = reto), (DRDAID = {2}), Cierre de la base de datos 'reto'.
-----------------------------------------------------------------
-Wed May 07 16:06:52 CEST 2025:
- Iniciando instancia 97e00100-0196-ab11-f32a-00001ea69daf de Derby, versión The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): 
-en el directorio de base de datos E:\Mohamed magdy\NetBeansProjects\Reto-master\reto con el cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
-Cargado desde file:/E:/Mohamed%20magdy/db-derby-10.17.1.0-bin/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=21.0.6+8-LTS-188
-user.dir=E:\Mohamed magdy\db-derby-10.17.1.0-bin
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=E:\Mohamed magdy\NetBeansProjects\Reto-master
+derby.system.home=E:\Mohamed magdy\NetBeansProjects\Reto
 Cargador de clases de base de datos iniciado - derby.database.classpath=''

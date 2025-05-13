@@ -119,20 +119,46 @@
             <Property name="text" type="java.lang.String" value="Artista"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="consultarTodos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar todos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarTodosActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuConsultarUnArtista">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consulta un artista"/>
+                <Property name="text" type="java.lang.String" value="Consulta Uno"/>
+                <Property name="actionCommand" type="java.lang.String" value="Consulta artista"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuConsultarUnArtistaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuAonsultarTodosArtistas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consultar Todo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuAonsultarTodosArtistasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuArtistaEliminar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar Artista"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuArtistaEliminarActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuInsertarArtista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Insertar Artista"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuInsertarArtistaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuActualizarArtista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar Artista"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuActualizarArtistaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

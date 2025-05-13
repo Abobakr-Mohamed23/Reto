@@ -8,6 +8,8 @@ public class ActualizarCompania extends javax.swing.JInternalFrame {
 
     public ActualizarCompania() {
         initComponents();
+        jDateCompania.getDateEditor().setEnabled(false);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -186,6 +188,8 @@ public class ActualizarCompania extends javax.swing.JInternalFrame {
                 txtNombreActualizar.setEnabled(true);
                 txtUbicacionActualizar.setEnabled(true);
                 jDateCompania.setEnabled(true);
+                jDateCompania.getDateEditor().setEnabled(false);
+
             }
         } catch (NumberFormatException nfe) {
             lblConfirmación.setText("El código de la compañía debe ser un número entero.");
@@ -219,6 +223,7 @@ public class ActualizarCompania extends javax.swing.JInternalFrame {
                 lblValido.setText("Compañía actualizada correctamente");
                 txtNombreActualizar.setText("");
                 txtUbicacionActualizar.setText("");
+                txtCodigo.setText("");
                 jDateCompania.setDate(null);
 
             } else {

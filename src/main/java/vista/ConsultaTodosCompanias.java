@@ -10,10 +10,6 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
     public ConsultaTodosCompanias() {
         initComponents();
         lblError.setText("");
-
-
-
-        //Se rellena la tabla con los datos
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Código");
         modelo.addColumn("Nombre");

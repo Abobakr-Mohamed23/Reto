@@ -26,6 +26,13 @@ public class Artista {
         this.compania = compania;
     }
 
+    @Override
+    public String toString() {
+        return nombreCompleto;
+    }
+    
+    
+
     public int getIdArtista() {
         return idArtista;
     }

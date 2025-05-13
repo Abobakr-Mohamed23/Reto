@@ -19,7 +19,7 @@ public class AccesoArtista {
         int idCompania = compania.getIdCompania();
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, compania) VALUES (?, ?, ?, ?)";
+            String sentenciaInsertar = "INSERT INTO Artista (nombreCompleto, paisOrigen, fechaNacimiento, IDcompania) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = conexion.prepareStatement(sentenciaInsertar);
             ps.setString(1, artista.getNombreCompleto());
             ps.setString(2, artista.getPaisOrigen());
@@ -98,7 +98,8 @@ public class AccesoArtista {
             ps.setString(1, artista.getNombreCompleto());
             ps.setString(2, artista.getPaisOrigen());
             ps.setDate(3, new java.sql.Date(artista.getFechaNacimiento().getTime()));
-            ps.setInt(4, idCompania);
+            ps.setInt(4,idCompania );
+             ps.setInt(5,artista.getIdArtista());
 
             int filasAfectadas = ps.executeUpdate();
             ps.close();
@@ -133,21 +134,23 @@ public class AccesoArtista {
 
     }
 
-    public static int eliminarPorNombre(String nombreCompleto)
-            throws ClassNotFoundException, SQLException {
+    public static boolean tieneCanciones(int idArtista) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-        int numEliminados;
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaEliminar = "DELETE FROM Artista "
-                    + " WHERE nombreCompleto = '" + nombreCompleto + "'";
-            Statement sentencia = conexion.createStatement();
-            numEliminados = sentencia.executeUpdate(sentenciaEliminar);
-            sentencia.close();
+            String consulta = "SELECT COUNT(*) FROM cancion WHERE idArtista = ?";
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ps.setInt(1, idArtista);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+            rs.close();
+            ps.close();
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-        return numEliminados;
+        return false;
     }
 
 }
