@@ -98,7 +98,8 @@ public class AccesoArtista {
             ps.setString(1, artista.getNombreCompleto());
             ps.setString(2, artista.getPaisOrigen());
             ps.setDate(3, new java.sql.Date(artista.getFechaNacimiento().getTime()));
-            ps.setInt(4, idCompania);
+            ps.setInt(4,idCompania );
+             ps.setInt(5,artista.getIdArtista());
 
             int filasAfectadas = ps.executeUpdate();
             ps.close();

@@ -27,10 +27,11 @@ public class Principal extends javax.swing.JFrame {
         menuInsertarCancion = new javax.swing.JMenuItem();
         menuActualizarCancion = new javax.swing.JMenuItem();
         menuArtista = new javax.swing.JMenu();
-        consultarTodos = new javax.swing.JMenuItem();
         menuConsultarUnArtista = new javax.swing.JMenuItem();
-        InsertarArtista = new javax.swing.JMenuItem();
-        artistaEliminar = new javax.swing.JMenuItem();
+        menuAonsultarTodosArtistas = new javax.swing.JMenuItem();
+        menuArtistaEliminar = new javax.swing.JMenuItem();
+        menuInsertarArtista = new javax.swing.JMenuItem();
+        menuActualizarArtista = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -134,15 +135,8 @@ public class Principal extends javax.swing.JFrame {
 
         menuArtista.setText("Artista");
 
-        consultarTodos.setText("Consultar todos");
-        consultarTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarTodosActionPerformed(evt);
-            }
-        });
-        menuArtista.add(consultarTodos);
-
-        menuConsultarUnArtista.setText("Consulta un artista");
+        menuConsultarUnArtista.setText("Consulta Uno");
+        menuConsultarUnArtista.setActionCommand("Consulta artista");
         menuConsultarUnArtista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuConsultarUnArtistaActionPerformed(evt);
@@ -150,22 +144,38 @@ public class Principal extends javax.swing.JFrame {
         });
         menuArtista.add(menuConsultarUnArtista);
 
-        InsertarArtista.setText("Insertar Artista");
-        InsertarArtista.setToolTipText("");
-        InsertarArtista.addActionListener(new java.awt.event.ActionListener() {
+        menuAonsultarTodosArtistas.setText("Consultar Todo");
+        menuAonsultarTodosArtistas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertarArtistaActionPerformed(evt);
+                menuAonsultarTodosArtistasActionPerformed(evt);
             }
         });
-        menuArtista.add(InsertarArtista);
+        menuArtista.add(menuAonsultarTodosArtistas);
 
-        artistaEliminar.setText("Eliminar Artista");
-        artistaEliminar.addActionListener(new java.awt.event.ActionListener() {
+        menuArtistaEliminar.setText("Eliminar Artista");
+        menuArtistaEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                artistaEliminarActionPerformed(evt);
+                menuArtistaEliminarActionPerformed(evt);
             }
         });
-        menuArtista.add(artistaEliminar);
+        menuArtista.add(menuArtistaEliminar);
+
+        menuInsertarArtista.setText("Insertar Artista");
+        menuInsertarArtista.setToolTipText("");
+        menuInsertarArtista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuInsertarArtistaActionPerformed(evt);
+            }
+        });
+        menuArtista.add(menuInsertarArtista);
+
+        menuActualizarArtista.setText("Actualizar Artista");
+        menuActualizarArtista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuActualizarArtistaActionPerformed(evt);
+            }
+        });
+        menuArtista.add(menuActualizarArtista);
 
         menuBar.add(menuArtista);
 
@@ -290,21 +300,21 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuActualizarCancionActionPerformed
 
-    private void artistaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artistaEliminarActionPerformed
+    private void menuArtistaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuArtistaEliminarActionPerformed
         if (eliminarArtista == null || eliminarArtista.isClosed()) {
             eliminarArtista = new EliminarArtista();
             escritorio.add(eliminarArtista);
             eliminarArtista.setVisible(true);
         }
-    }//GEN-LAST:event_artistaEliminarActionPerformed
+    }//GEN-LAST:event_menuArtistaEliminarActionPerformed
 
-    private void InsertarArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertarArtistaActionPerformed
+    private void menuInsertarArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuInsertarArtistaActionPerformed
        if (insertarArtista == null || insertarArtista.isClosed()) {
             insertarArtista = new InsertarArtista();
             escritorio.add(insertarArtista);
             insertarArtista.setVisible(true);
         }
-    }//GEN-LAST:event_InsertarArtistaActionPerformed
+    }//GEN-LAST:event_menuInsertarArtistaActionPerformed
 
     private void menuConsultarUnArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuConsultarUnArtistaActionPerformed
 
@@ -316,13 +326,22 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuConsultarUnArtistaActionPerformed
 
-    private void consultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarTodosActionPerformed
+    private void menuAonsultarTodosArtistasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAonsultarTodosArtistasActionPerformed
         if (formularioConsultaTodosArtistas == null || formularioConsultaTodosArtistas.isClosed()) {
             formularioConsultaTodosArtistas = new ConsultarTodosArtistas();
             escritorio.add(formularioConsultaTodosArtistas);
             formularioConsultaTodosArtistas.setVisible(true);
         }
-    }//GEN-LAST:event_consultarTodosActionPerformed
+    }//GEN-LAST:event_menuAonsultarTodosArtistasActionPerformed
+
+    private void menuActualizarArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActualizarArtistaActionPerformed
+       if (actualizarArtista == null || actualizarArtista.isClosed()) {
+            actualizarArtista = new ActualizarArtista();
+            escritorio.add(actualizarArtista);
+            actualizarArtista.setVisible(true);
+            actualizarArtista.setSize(570, 430);
+        }
+    }//GEN-LAST:event_menuActualizarArtistaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -358,24 +377,25 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem InsertarArtista;
-    private javax.swing.JMenuItem artistaEliminar;
     private javax.swing.JMenu consultarCancionUno;
-    private javax.swing.JMenuItem consultarTodos;
     private javax.swing.JMenuItem consultarUnaCancion;
     private javax.swing.JMenuItem eliminarCancionMenuItem;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem menuActualizarArtista;
     private javax.swing.JMenuItem menuActualizarCancion;
     private javax.swing.JMenuItem menuActualizarCompa;
     private javax.swing.JMenu menuActualizarCompania;
+    private javax.swing.JMenuItem menuAonsultarTodosArtistas;
     private javax.swing.JMenu menuArtista;
+    private javax.swing.JMenuItem menuArtistaEliminar;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuConsultarTodasCanciones;
     private javax.swing.JMenuItem menuConsultarTodos;
     private javax.swing.JMenuItem menuConsultarUnArtista;
     private javax.swing.JMenuItem menuConsultarUno;
     private javax.swing.JMenuItem menuEliminarCompania;
+    private javax.swing.JMenuItem menuInsertarArtista;
     private javax.swing.JMenuItem menuInsertarCancion;
     private javax.swing.JMenuItem menuInsertarCompania;
     // End of variables declaration//GEN-END:variables
@@ -405,6 +425,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultaArtista fomularioConsultaUnaArtista = null;
     EliminarArtista eliminarArtista = null;
     InsertarArtista insertarArtista = null;
+    ActualizarArtista actualizarArtista = null;
 
     /**
      * **********VARIABLES***********************
