@@ -7,8 +7,10 @@ package vista;
 import acceso.AccesoArtista;
 import acceso.AccesoCompania;
 import java.sql.SQLException;
+import javax.swing.text.AbstractDocument;
 import modelo.Artista;
 import modelo.Compania_Discografica;
+import util.FiltroNumerico;
 
 /**
  *
@@ -23,7 +25,8 @@ public class InsertarArtista extends javax.swing.JInternalFrame {
         initComponents();
         lblError.setText("");
         cargarDatosCompanias();
-        
+        jDateFechaNacimiento.getDateEditor().setEnabled(false);
+
     }
 
     /**
@@ -157,9 +160,9 @@ public class InsertarArtista extends javax.swing.JInternalFrame {
         if (companiaSeleccionado != null) {
 
             int idCompania = companiaSeleccionado.getIdCompania();
-             
+
             txtCodigoCompania.setText(companiaSeleccionado.getNombreCompania());
-            
+
         }
     }//GEN-LAST:event_jComboBoxCompaniasActionPerformed
 
@@ -173,8 +176,12 @@ public class InsertarArtista extends javax.swing.JInternalFrame {
             }
 
             String nombreArtista = txtNombre.getText();
-             String paisOrigen = txtPais.getText();
-            
+            String paisOrigen = txtPais.getText();
+
+            if (txtNombre.equals("") || txtPais.equals("") || fechaNacimiento == null) {
+                lblError.setText("Llene todos los campos");
+                return;
+            }
 
             Compania_Discografica compania = (Compania_Discografica) jComboBoxCompanias.getSelectedItem();
 
@@ -185,7 +192,7 @@ public class InsertarArtista extends javax.swing.JInternalFrame {
                 AccesoArtista.insertar(artista);
 
                 lblConfirmacion.setText("Insertado correctamente");
-
+                lblError.setText("");
                 txtNombre.setText("");
                 jDateFechaNacimiento.setDate(null);
                 txtPais.setText("");
@@ -206,15 +213,12 @@ public class InsertarArtista extends javax.swing.JInternalFrame {
     /**
      * @param args the command line arguments
      */
-     
     private void cargarDatosCompanias() {
 
         try {
             for (Compania_Discografica compania : AccesoCompania.consultarTodos()) {
 
                 jComboBoxCompanias.addItem(compania);
-                
-                
 
             }
 
@@ -225,6 +229,7 @@ public class InsertarArtista extends javax.swing.JInternalFrame {
         }
 
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

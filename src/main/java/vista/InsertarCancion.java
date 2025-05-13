@@ -6,9 +6,11 @@ import acceso.AccesoCompania;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.AbstractDocument;
 import modelo.Artista;
 import modelo.Cancion;
 import modelo.Compania_Discografica;
+import util.FiltroNumerico;
 
 public class InsertarCancion extends javax.swing.JInternalFrame {
 
@@ -17,6 +19,9 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         lblErrorInsertarCancion.setText("");
         cargarDatosArtista();
         txtArtistaCancion1.setEnabled(false);
+        ((AbstractDocument) jTextDuracionCancionAInsertar.getDocument()).setDocumentFilter(new FiltroNumerico());
+        jdateFechaLanzamientoCancionAinsertar.getDateEditor().setEnabled(false);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -36,6 +41,7 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         txtArtistaCancion1 = new javax.swing.JTextField();
         jTextNombreCancionAInsertar = new javax.swing.JTextField();
         jTextDuracionCancionAInsertar = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -91,15 +97,20 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Artista");
 
+        jTextDuracionCancionAInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextDuracionCancionAInsertarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("(Minutos)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(273, 273, 273)
-                        .addComponent(lblErrorInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +137,12 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
                         .addComponent(jLabelTituloInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(289, 289, 289)
-                        .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonAgregarCancion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblErrorInsertarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,7 +161,9 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jdateFechaLanzamientoCancionAinsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextDuracionCancionAInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextDuracionCancionAInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelTextoFechaLanzamientoCancion)
                                 .addGap(28, 28, 28)
@@ -215,9 +233,9 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         if (artistaSeleccionado != null) {
 
             int idArtista = artistaSeleccionado.getIdArtista();
-             
+
             txtArtistaCancion1.setText(artistaSeleccionado.getNombreCompleto());
-            
+
         }
 
 
@@ -229,8 +247,6 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
             for (Artista artista : AccesoArtista.consultarTodos()) {
 
                 comboBoxArtista.addItem(artista);
-                
-                
 
             }
 
@@ -246,11 +262,17 @@ public class InsertarCancion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 
+    private void jTextDuracionCancionAInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDuracionCancionAInsertarActionPerformed
+
+
+    }//GEN-LAST:event_jTextDuracionCancionAInsertarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonAgregarCancion;
     private javax.swing.JComboBox comboBoxArtista;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelTextoDuracionCancion;
     private javax.swing.JLabel jLabelTextoFechaLanzamientoCancion;
     private javax.swing.JLabel jLabelTextoNombreCancion;

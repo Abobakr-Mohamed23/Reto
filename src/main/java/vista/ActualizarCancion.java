@@ -13,10 +13,12 @@ import modelo.Artista;
 import modelo.Cancion;
 
 public class ActualizarCancion extends javax.swing.JInternalFrame {
-    
+
     public ActualizarCancion() {
         initComponents();
-        
+        jDateFechaLanzamiento.getDateEditor().setEnabled(false);
+        desactivar();
+
     }
 
     /**
@@ -44,6 +46,7 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
         btnActualizarCancion = new javax.swing.JButton();
         lblConfirmación = new javax.swing.JLabel();
         lblValido = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -89,24 +92,29 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
 
         lblConfirmación.setForeground(new java.awt.Color(255, 0, 51));
 
+        jLabel1.setText("(Minutos)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblConfirmación, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblValido, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLimpiar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblCodigo)
                                 .addComponent(lblCodigo4)
                                 .addComponent(lblCodigo3)
                                 .addComponent(lblCodigo2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblConfirmación)
-                                    .addComponent(lblCodigo1))))
+                                .addComponent(lblCodigo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(118, 118, 118)
                         .addComponent(btnActualizarCancion))
                     .addGroup(layout.createSequentialGroup()
@@ -122,21 +130,19 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
                                 .addComponent(jDateFechaLanzamiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                                 .addComponent(txtNombreCancion, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(comboBoxArtistaCancion, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(107, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblValido)
-                .addGap(133, 133, 133))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(41, 41, 41)
                 .addComponent(lblTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(lblConfirmación)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblValido)
+                .addComponent(lblConfirmación, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblValido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigo)
@@ -153,12 +159,13 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigo3)
-                    .addComponent(txtDuracionCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDuracionCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigo4)
                     .addComponent(comboBoxArtistaCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
                     .addComponent(btnActualizarCancion))
@@ -169,19 +176,19 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
+
         try {
-            
+
             int codigo = Integer.parseInt(txtCodigoBuscar.getText());
             Cancion cancion = AccesoCancion.consultar(codigo);
-            
+
             if (cancion == null) {
                 lblConfirmación.setText("No existe ninguna canción con ese código.");
             } else {
                 txtNombreCancion.setText(cancion.getNombreCancion());
                 txtDuracionCancion.setText(Double.toString(cancion.getDuracion()));
                 jDateFechaLanzamiento.setDate(cancion.getFechaLanzamiento());
-                
+
                 cargarArtistasActualizar();
                 Artista artistaCancion = cancion.getArtista();
                 for (int i = 0; i < comboBoxArtistaCancion.getItemCount(); i++) {
@@ -191,12 +198,9 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
                         break;
                     }
                 }
-                
-                txtCodigoBuscar.setEnabled(false);
-                txtNombreCancion.setEnabled(true);
-                txtDuracionCancion.setEnabled(true);
-                comboBoxArtistaCancion.setEditable(false);
-                jDateFechaLanzamiento.setEnabled(true);
+
+                activar();
+
             }
         } catch (NumberFormatException nfe) {
             lblConfirmación.setText("El código de la canción debe ser un número entero.");
@@ -208,7 +212,24 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void activar() {
+
+        txtCodigoBuscar.setEnabled(false);
+        txtNombreCancion.setEnabled(true);
+        txtDuracionCancion.setEnabled(true);
+        jDateFechaLanzamiento.setEnabled(true);
+        comboBoxArtistaCancion.setEnabled(true);
+        jDateFechaLanzamiento.setEnabled(true);
+        jDateFechaLanzamiento.getDateEditor().setEnabled(false);
+
+    }
+
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        desactivar();
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void desactivar() {
         txtCodigoBuscar.setEnabled(true);
         txtNombreCancion.setEnabled(false);
         txtDuracionCancion.setEnabled(false);
@@ -219,37 +240,32 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
         txtDuracionCancion.setText("");
         jDateFechaLanzamiento.setDate(null);
         comboBoxArtistaCancion.removeAllItems();
-        
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
+    }
     private void btnActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCancionActionPerformed
-        
+
         try {
-            
+
             java.util.Date mFecha = jDateFechaLanzamiento.getDate();
             java.sql.Date anioFundacion = null;
-            
+
             if (mFecha != null) {
                 anioFundacion = new java.sql.Date(mFecha.getTime());
             }
-            
+
             int codigo = Integer.parseInt(txtCodigoBuscar.getText());
             String nombreCancion = txtNombreCancion.getText();
             Double duracion = Double.parseDouble(txtDuracionCancion.getText());
             Artista artistaSeleccionado = (Artista) comboBoxArtistaCancion.getSelectedItem();
-            
+
             Cancion cancion = new Cancion(codigo, nombreCancion, anioFundacion, duracion, artistaSeleccionado);
-            
+
             boolean valido = AccesoCancion.modificar(cancion);
-            
+
             if (valido) {
                 lblValido.setText("Canción actualizada correctamente");
-                txtNombreCancion.setText("");
-                txtDuracionCancion.setText("");
-                jDateFechaLanzamiento.setDate(null);
-                comboBoxArtistaCancion.removeAllItems();
-                txtCodigoBuscar.setText("");
-                
+                limpiar();
+                desactivar();
+
             } else {
                 lblConfirmación.setText("Error al actualizar.");
             }
@@ -261,10 +277,10 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
         } catch (SQLException sqle) {
             lblConfirmación.setText("Error en la base de datos.");
         }
-        
+
 
     }//GEN-LAST:event_btnActualizarCancionActionPerformed
-    
+
     private void cargarArtistasActualizar() {
         comboBoxArtistaCancion.removeAllItems();
         try {
@@ -275,7 +291,7 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
+
     private void limpiar() {
         lblConfirmación.setText("");
         txtNombreCancion.setText("");
@@ -290,6 +306,7 @@ public class ActualizarCancion extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox comboBoxArtistaCancion;
     private com.toedter.calendar.JDateChooser jDateFechaLanzamiento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo1;
     private javax.swing.JLabel lblCodigo2;

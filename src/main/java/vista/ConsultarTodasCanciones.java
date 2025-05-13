@@ -9,9 +9,12 @@ public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
 
     public ConsultarTodasCanciones() {
         initComponents();
-        lblErrorConsultarTodasCanciones.setText("");
+        cargarTabla();
 
-       
+    }
+
+    private void cargarTabla() {
+        lblErrorConsultarTodasCanciones.setText("");
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Código");
         modelo.addColumn("Nombre canción");
@@ -107,8 +110,6 @@ public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTituloListaConsultarTodasCanciones;
     private javax.swing.JTable tablaConsultarTodasCanciones;
     // End of variables declaration//GEN-END:variables
-/**
-     * ** preguntar***
-     */
+
 
 }

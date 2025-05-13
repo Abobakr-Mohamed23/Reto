@@ -32,10 +32,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
-                      <Component id="lblErrorInsertarCancion" min="-2" pref="167" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -71,6 +67,13 @@
                       <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
                       <Component id="buttonAgregarCancion" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblErrorInsertarCancion" min="-2" pref="305" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -92,7 +95,10 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jdateFechaLanzamientoCancionAinsertar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextDuracionCancionAInsertar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTextDuracionCancionAInsertar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabelTextoFechaLanzamientoCancion" min="-2" max="-2" attributes="0"/>
@@ -197,6 +203,14 @@
     <Component class="javax.swing.JTextField" name="jTextNombreCancionAInsertar">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextDuracionCancionAInsertar">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextDuracionCancionAInsertarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="(Minutos)"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

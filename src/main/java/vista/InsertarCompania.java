@@ -17,6 +17,8 @@ public class InsertarCompania extends javax.swing.JInternalFrame {
     public InsertarCompania() {
         initComponents();
         lblError.setText("");
+        jdateAnio.getDateEditor().setEnabled(false);
+
     }
 
     /**

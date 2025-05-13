@@ -134,21 +134,23 @@ public class AccesoArtista {
 
     }
 
-    public static int eliminarPorNombre(String nombreCompleto)
-            throws ClassNotFoundException, SQLException {
+    public static boolean tieneCanciones(int idArtista) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
-        int numEliminados;
         try {
             conexion = DerbyUtil.abrirConexion();
-            String sentenciaEliminar = "DELETE FROM Artista "
-                    + " WHERE nombreCompleto = '" + nombreCompleto + "'";
-            Statement sentencia = conexion.createStatement();
-            numEliminados = sentencia.executeUpdate(sentenciaEliminar);
-            sentencia.close();
+            String consulta = "SELECT COUNT(*) FROM cancion WHERE idArtista = ?";
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ps.setInt(1, idArtista);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+            rs.close();
+            ps.close();
         } finally {
             DerbyUtil.cerrarConexion(conexion);
         }
-        return numEliminados;
+        return false;
     }
 
 }

@@ -1,11 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 import acceso.AccesoArtista;
-import acceso.AccesoCompania;
 import java.sql.SQLException;
 
 /**
@@ -108,6 +103,14 @@ public class EliminarArtista extends javax.swing.JInternalFrame {
         try {
             lblError.setText("");
             int codigo = Integer.parseInt(txtCodigo.getText());
+            
+            
+            if (AccesoArtista.tieneCanciones(codigo)) {
+                lblError.setText("No se puede eliminar el artista: tiene canciones asociados.");
+                lblConfirmacion.setText("");
+                return;
+            }
+            
             boolean compania = AccesoArtista.eliminar(codigo);
             if (compania) {
                 lblConfirmacion.setText("Eliminado correctamente");
