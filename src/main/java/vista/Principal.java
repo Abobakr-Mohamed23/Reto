@@ -13,6 +13,8 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         escritorio = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuActualizarCompania = new javax.swing.JMenu();
         menuConsultarUno = new javax.swing.JMenuItem();
@@ -33,8 +35,29 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Panel de Control - JAC Music DB");
+
+        escritorio.setBackground(new java.awt.Color(0, 102, 153));
+        escritorio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        escritorio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("JAC MUSIC DB");
+        escritorio.add(jLabel1);
+        jLabel1.setBounds(0, 180, 820, 50);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Tu música , tu control, tu base de datos");
+        escritorio.add(jLabel2);
+        jLabel2.setBounds(0, 250, 820, 40);
+
+        menuBar.setForeground(new java.awt.Color(255, 255, 255));
+        menuBar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         menuActualizarCompania.setText("Compañía");
+        menuActualizarCompania.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         menuConsultarUno.setText("Consultar");
         menuConsultarUno.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +103,7 @@ public class Principal extends javax.swing.JFrame {
         menuBar.add(menuActualizarCompania);
 
         consultarCancionUno.setText("Cancion");
-        consultarCancionUno.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        consultarCancionUno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         consultarCancionUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarCancionUnoActionPerformed(evt);
@@ -131,6 +154,7 @@ public class Principal extends javax.swing.JFrame {
         menuBar.add(consultarCancionUno);
 
         menuArtista.setText("Artista");
+        menuArtista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         consultarTodos.setText("Consultar todos");
         consultarTodos.addActionListener(new java.awt.event.ActionListener() {
@@ -264,11 +288,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuInsertarCancionActionPerformed
 
     private void menuActualizarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActualizarCancionActionPerformed
-        if (actualizarCancion == null || actualizarCancion.isClosed()) {
+       /* if (actualizarCancion == null || actualizarCancion.isClosed()) {
             actualizarCancion = new ActualizarCancion();
             escritorio.add(actualizarCancion);
             actualizarCancion.setVisible(true);
-        }
+        }*/
     }//GEN-LAST:event_menuActualizarCancionActionPerformed
 
     private void consultarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarTodosActionPerformed
@@ -327,6 +351,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultarUnaCancion;
     private javax.swing.JMenuItem eliminarCancionMenuItem;
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem menuActualizarCancion;
     private javax.swing.JMenuItem menuActualizarCompa;
@@ -358,7 +384,7 @@ public class Principal extends javax.swing.JFrame {
     ConsultarUnaCancion formularioConsultaUnaCancion = null;
     EliminarCancion eliminarCancion = null;
     InsertarCancion insertarCancion = null;
-    ActualizarCancion actualizarCancion = null;
+   // ActualizarCancion actualizarCancion = null;
 
 
     /**

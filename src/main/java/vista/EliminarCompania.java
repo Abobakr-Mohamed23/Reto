@@ -41,7 +41,7 @@ public class EliminarCompania extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Eliminar compañía");
+        setTitle("Gestión de Compañía");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Eliminar Compañía");

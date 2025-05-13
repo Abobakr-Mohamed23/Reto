@@ -39,7 +39,7 @@ public class EliminarCancion extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Eliminar canción");
+        setTitle("Gestión de Canciones");
         setPreferredSize(new java.awt.Dimension(600, 500));
 
         jLabelTituloEliminarCancion.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

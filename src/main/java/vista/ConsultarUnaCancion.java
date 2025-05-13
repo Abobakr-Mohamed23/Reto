@@ -39,7 +39,7 @@ public class ConsultarUnaCancion extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Consultar canción");
+        setTitle("Gestión de Canciones");
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(600, 500));
 

@@ -36,11 +36,11 @@ public class ActualizarCompania extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setForeground(new java.awt.Color(51, 153, 255));
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Actualizar compañía");
+        setTitle("Gestión de Compañía");
         setVisible(true);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

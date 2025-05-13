@@ -54,7 +54,7 @@ public class ConsultarTodasCanciones extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Lista de canciones");
+        setTitle("Gestión de Canciones");
 
         lblTituloListaConsultarTodasCanciones.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblTituloListaConsultarTodasCanciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -58,7 +58,7 @@ public class ConsultaTodosCompanias extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Lista de compañías");
+        setTitle("Gestión de Compañía");
 
         jScrollPane1.setViewportView(tbDepartamentos);
 
