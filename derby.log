@@ -1,7 +1,7 @@
-Tue May 13 16:59:08 CEST 2025 : Servidor de red Apache Derby: Se ha iniciado 10.17.1.0 - (1913217) y está listo para aceptar las conexiones en el puerto 1527
+Tue May 13 18:57:18 CEST 2025 : Servidor de red Apache Derby: Se ha iniciado 10.17.1.0 - (1913217) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Tue May 13 16:59:21 CEST 2025:
- Iniciando instancia a816c00e-0196-ca28-1b39-ffffbbd53320 de Derby, versión The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): 
+Tue May 13 19:14:29 CEST 2025:
+ Iniciando instancia a816c00e-0196-ca94-4ba8-ffffbbd53320 de Derby, versión The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): 
 en el directorio de base de datos E:\Mohamed magdy\NetBeansProjects\Reto\reto con el cargador de clases jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e
 Cargado desde file:/E:/Mohamed%20magdy/db-derby-10.17.1.0-bin/lib/derby.jar
 java.vendor=Oracle Corporation

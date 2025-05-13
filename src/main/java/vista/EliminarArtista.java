@@ -108,8 +108,16 @@ public class EliminarArtista extends javax.swing.JInternalFrame {
         try {
             lblError.setText("");
             int codigo = Integer.parseInt(txtCodigo.getText());
-            boolean compania = AccesoArtista.eliminar(codigo);
-            if (compania) {
+            
+            
+             if (AccesoArtista.tieneCanciones(codigo)) {
+                lblError.setText("No se puede eliminar la Artista: tiene Canciones asociados.");
+                lblConfirmacion.setText("");
+                return;
+            }
+             
+            boolean borrado = AccesoArtista.eliminar(codigo);
+            if (borrado) {
                 lblConfirmacion.setText("Eliminado correctamente");
                 lblError.setText("");
                 txtCodigo.setText("");

@@ -150,5 +150,24 @@ public class AccesoArtista {
         }
         return numEliminados;
     }
+    
+    public static boolean tieneCanciones(int idArtista) throws ClassNotFoundException, SQLException {
+        Connection conexion = null;
+        try {
+            conexion = DerbyUtil.abrirConexion();
+            String consulta = "SELECT COUNT(*) FROM Cancion WHERE idCompania = ?";
+            PreparedStatement ps = conexion.prepareStatement(consulta);
+            ps.setInt(1, idArtista);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+            rs.close();
+            ps.close();
+        } finally {
+            DerbyUtil.cerrarConexion(conexion);
+        }
+        return false;
+    }
 
 }

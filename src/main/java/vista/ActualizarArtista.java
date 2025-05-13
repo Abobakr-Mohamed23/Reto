@@ -180,7 +180,7 @@ public class ActualizarArtista extends javax.swing.JInternalFrame{
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
         try {
-
+            lblError.setText("");
             int codigo = Integer.parseInt(txtCodigoBuscar.getText());
             Artista artista = AccesoArtista.consultar(codigo);
 
