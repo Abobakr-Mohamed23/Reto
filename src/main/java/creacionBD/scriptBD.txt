@@ -1,4 +1,4 @@
--- Tabla compañía
+-- Crear tabla compañía
 CREATE TABLE compania (
     idCompania INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nombreCompania VARCHAR(100) NOT NULL,
@@ -7,35 +7,43 @@ CREATE TABLE compania (
 );
 
 
+-- Crear tabla artista
 
--- Tabla artista
 CREATE TABLE artista (
     idArtista INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nombreCompleto VARCHAR(100) NOT NULL,
     paisOrigen VARCHAR(50),
     fechaNacimiento DATE,
-    idCompania INT
+    idCompania INT,
+    FOREIGN KEY (idCompania) REFERENCES compania(idCompania)
 );
 
--- Tabla canción
+-- Crear tabla canción
 CREATE TABLE cancion (
     idCancion INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nombreCancion VARCHAR(100) NOT NULL,
     fechaLanzamiento DATE,
-    duracion INT,
-    idArtista INT
-  
+    duracion DOUBLE,
+    idArtista INT,
+    FOREIGN KEY (idArtista) REFERENCES artista(idArtista)
 );
 
 
 ---------Insertar datos----------------
 
 -- Insertar compañías
-INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Sony Music', 'Estados Unidos', '1929-9-9');
-INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Universal Music', 'Estados Unidos', '1934-10-23');
-INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Warner Music', 'Estados Unidos', '1958-3-19');
-INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('EMI', 'Reino Unido', '1931-3-10');
-INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Indie Records', 'España', '2001-6-26');
+
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Sony Music', 'Estados Unidos', '1972-08-09');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Universal Music', 'Estados Unidos', '1972-08-09');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Warner Music', 'Estados Unidos', '1972-08-09');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('EMI', 'Reino Unido', '1972-08-09');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Indie Records', 'España', '1972-08-09');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('BMG Rights Management', 'Alemania', '2008-10-01');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Napalm Records', 'Austria', '1992-05-15');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Nuclear Blast', 'Alemania', '1987-11-27');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Roadrunner Records', 'Países Bajos', '1980-01-01');
+INSERT INTO compania (nombreCompania, ubicacion, anioFundacion) VALUES ('Sub Pop', 'Estados Unidos', '1986-04-01');
+
 
 -- Insertar artistas
 INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Juanes', 'Colombia', '1972-08-09', 1);
@@ -49,6 +57,7 @@ INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VA
 INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Taylor Swift', 'Estados Unidos', '1989-12-13', 2);
 INSERT INTO artista (nombreCompleto, paisOrigen, fechaNacimiento, idCompania) VALUES ('Ed Sheeran', 'Reino Unido', '1991-02-17', 2);
 
+
 -- Insertar canciones
 INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUES ('A Dios le Pido', '2002-07-07', 210, 1);
 INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUES ('Hips Don''t Lie', '2006-02-28', 218, 2);
@@ -60,3 +69,41 @@ INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUE
 INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUES ('God''s Plan', '2018-01-19', 198, 8);
 INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUES ('Shake It Off', '2014-08-18', 242, 9);
 INSERT INTO cancion (nombreCancion, fechaLanzamiento, duracion, idArtista) VALUES ('Shape of You', '2017-01-06', 233, 10);
+
+
+
+-------------consultas---------------
+
+-- Datos de canciones con los datos de su artista y su compania  
+SELECT  c.nombreCancion, c.fechaLanzamiento, c.duracion, 
+        a.nombreCompleto AS nombreArtista, a.paisOrigen AS paisArtista,
+        a.fechaNacimiento AS nacimientoArtista, comp.nombreCompania,
+        comp.ubicacion AS ubicacionCompania, comp.anioFundacion AS fundacionCompania
+FROM cancion c JOIN artista a ON c.idArtista = a.idArtista
+               JOIN compania comp ON a.idCompania = comp.idCompania;
+
+
+
+
+-- artistas con el numero de su canciones 
+
+SELECT a.nombreCompleto AS nombreArtista, COUNT(c.idCancion) AS numeroCanciones
+FROM artista a LEFT JOIN cancion c ON a.idArtista = c.idArtista
+GROUP BY a.nombreCompleto
+ORDER BY numeroCanciones DESC;
+
+-- Top 3 compañías con más artistas registrados
+
+select comp.nombreCompania, COUNT(a.idartista) AS numeroArtistas
+FROM compania comp JOIN artista a ON comp.idcompania = a.idCompania
+GROUP BY comp.nombreCompania
+ORDER BY numeroArtistas
+FETCH FIRST 3 ROWS ONLY;
+
+
+-- Las 3 compañías con menos artistas registrados
+select comp.nombreCompania, COUNT(a.idartista) AS numeroArtistas
+FROM compania comp JOIN artista a ON comp.idcompania = a.idCompania
+GROUP BY comp.nombreCompania
+ORDER BY numeroArtistas
+FETCH FIRST 3 ROWS ONLY;
